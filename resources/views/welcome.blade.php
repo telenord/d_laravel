@@ -3,7 +3,8 @@
     <head>
         <title>Laravel</title>
 
-        <link href="https://fonts.googleapis.com/css?family=Lato:100" rel="stylesheet" type="text/css">
+		<link href="{{ elixir('css/app.css') }}" rel="stylesheet">
+		<script src="{{ elixir('js/app.js') }}"></script>
 
         <style>
             html, body {
