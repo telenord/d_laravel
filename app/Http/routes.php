@@ -15,6 +15,13 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::get('adminlte_demo', function () {
+    return view('adminlte_demo');
+});
+
+Route::get('app_demo', function () {
+    return view('layouts/app');
+});
 /*
 |--------------------------------------------------------------------------
 | Application Routes

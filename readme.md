@@ -1,3 +1,12 @@
+# time-spotter
+
+
+adminlte
+https://almsaeedstudio.com/
+https://github.com/acacha/adminlte-laravel
+
+
+
 # Laravel PHP Framework
 
 [![Build Status](https://travis-ci.org/laravel/framework.svg)](https://travis-ci.org/laravel/framework)
