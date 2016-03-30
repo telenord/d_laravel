@@ -11,10 +11,6 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
-
 Route::get('adminlte_demo', function () {
     return view('adminlte_demo');
 });
@@ -33,6 +29,14 @@ Route::get('app_demo', function () {
 |
 */
 
-Route::group(['middleware' => ['web']], function () {
-    //
+
+Route::group(['middleware' => 'web'], function () {
+    Route::auth();
+
+    Route::get('/home', 'HomeController@index');
+	
+	Route::get('/', function () {
+		return view('welcome');
+	});
+
 });
