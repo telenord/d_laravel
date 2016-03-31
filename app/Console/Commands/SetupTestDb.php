@@ -5,8 +5,10 @@ namespace App\Console\Commands;
 use Illuminate\Console\Command;
 use Illuminate\Filesystem\Filesystem;
 use Illuminate\Contracts\Console\Kernel;
-use Dotenv\Dotenv;
-use \App;
+
+/*
+ * based on https://github.com/SocialEngine/setup-test-db/blob/master/src/Commands/SetupTestDb.php
+ */
 
 class SetupTestDb extends Command
 {
@@ -43,13 +45,17 @@ class SetupTestDb extends Command
 		$this->files = $files;
     }
 	
-
+    /**
+     * loads env file (.env.something) based on environment set via --env=something.
+     *
+     * @return void
+     */
 	public function reloadEnvironment()
 	{
         $this->info("Reload environment");
-		putenv('APP_ENV=' . App::environment());
+		putenv('APP_ENV=' . \App::environment());
 		$this->laravel->make('Illuminate\Foundation\Bootstrap\DetectEnvironment')->bootstrap($this->laravel);
-		(new Dotenv(\App::environmentPath(), \App::environmentFile()))->overload();
+		(new \Dotenv\Dotenv(\App::environmentPath(), \App::environmentFile()))->overload();
 		$this->laravel->make('Illuminate\Foundation\Bootstrap\LoadConfiguration')->bootstrap($this->laravel);
 	}
 
