@@ -7,7 +7,7 @@ use Illuminate\Support\Facades\Hash;
 /**
  * Class UsersTest
  */
-class UsersTest extends MigrationsTestCase
+class UsersTest extends TransactionsTestCase
 {
 	
     /**

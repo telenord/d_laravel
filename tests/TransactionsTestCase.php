@@ -6,13 +6,8 @@ use Illuminate\Support\Facades\Hash;
 
 /**
  */
-class MigrationsTestCase extends TestCase
+class TransactionsTestCase extends TestCase
 {
-    use DatabaseMigrations;
-
-	public static function setUpBeforeClass()
-	{
-		file_put_contents('storage/database/testing.sqlite', '');
-	}
+    use DatabaseTransactions;
 }
 

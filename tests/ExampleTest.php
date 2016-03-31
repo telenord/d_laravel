@@ -4,7 +4,7 @@ use Illuminate\Foundation\Testing\WithoutMiddleware;
 use Illuminate\Foundation\Testing\DatabaseMigrations;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 
-class ExampleTest extends MigrationsTestCase
+class ExampleTest extends TransactionsTestCase
 {
     /**
      * A basic functional test example.
