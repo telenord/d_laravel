@@ -14,7 +14,11 @@
         "phpunit/phpunit": "~4.0",
         "symfony/css-selector": "2.8.*",
         "symfony/dom-crawler": "2.8.*",
-        "laracasts/integrated": "^0.15.6"
+        "laracasts/integrated": "^0.15.6",
+        "codeception/codeception": "*",
+        "codeception/phpbuiltinserver": "*",
+        "captbaritone/mailcatcher-codeception-module": "*",
+        "site5/phantoman": "*"
     },
     "autoload": {
         "classmap": [
@@ -26,8 +30,8 @@
     },
     "autoload-dev": {
         "classmap": [
-            "tests/TestCase.php",
-            "tests/TransactionsTestCase.php"
+            "tests/functional/TestCase.php",
+            "tests/functional/TransactionsTestCase.php"
         ]
     },
     "scripts": {

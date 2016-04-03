@@ -8,3 +8,6 @@
 Homestead.yaml
 Homestead.json
 .env
+composer.phar
+
+tests/_output/*
