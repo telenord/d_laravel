@@ -1,15 +1,22 @@
+#testing ----------------------------------------
 
 CODECEPT = ./vendor/bin/codecept
+ARTISAN = ./artisan
 
-check-local: check_functional
+check-local: check_testing_db_seed check_functional
 
-.PHONY: check_functional check_codecept
+.PHONY: check_testing_db_seed check_functional check_codecept
 
 check_functional: check_codecept
 
 check_codecept:
 	$(CODECEPT) run functional
 
+check_testing_db_seed: 
+	$(ARTISAN) db:seed-test --env=testing
+
+
+#downloads -----------------------------------------
 
 download-dependencies-local: composer_install 
 
