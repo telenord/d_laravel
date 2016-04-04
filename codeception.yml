@@ -11,7 +11,21 @@ settings:
     memory_limit: 1024M
 extensions:
     enabled:
+        - Codeception\Extension\PhpBuiltinServer
         - Codeception\Extension\RunFailed
+        - Codeception\Extension\Phantoman
+    config:
+        Codeception\Extension\Phantoman:
+            path: 'node_modules/.bin/phantomjs'
+        Codeception\Extension\PhpBuiltinServer:
+            hostname: localhost
+            port: 8383
+            autostart: true
+            documentRoot: public
+            router: test_server.php
+            directoryIndex: test_server.php
+            startDelay: 1
+            phpIni: /etc/php5/apache2/php.ini
 modules:
     config:
         Db:
