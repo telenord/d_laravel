@@ -26,17 +26,24 @@ check_acceptance:
 
 #downloads -----------------------------------------
 
-download-dependencies-local: composer_install 
-
 COMPOSER = composer.phar
-BOWER = node_modules/.bin/bower
-GULP = node_modules/.bin/gulp
 
-composer_install:
+$(COMPOSER):
 	$(PHP) -r "readfile('https://getcomposer.org/installer');" > composer-setup.php
 	$(PHP) composer-setup.php
 	$(PHP) -r "unlink('composer-setup.php');"
 	$(PHP) $(COMPOSER) install
+
+BOWER = node_modules/.bin/bower
+GULP = node_modules/.bin/gulp
+
+$(BOWER):
 	$(NPM) install
+
+download-dependencies-local: $(COMPOSER) $(BOWER) others_install
+
+.PHONY: others_install
+
+others_install:
 	$(BOWER) install
 	$(GULP)
