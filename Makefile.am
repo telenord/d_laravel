@@ -16,6 +16,14 @@ check_testing_db_seed:
 	$(ARTISAN) db:seed-test --env=testing
 
 
+.PHONY: check_testing_db_seed check_acceptance
+
+check-acceptance-local: check_testing_db_seed check_acceptance
+
+check_acceptance: 
+	$(CODECEPT) run --env phantom acceptance
+
+
 #downloads -----------------------------------------
 
 download-dependencies-local: composer_install 
