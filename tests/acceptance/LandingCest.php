@@ -14,7 +14,7 @@ class LandingCest
     // tests
     public function checkLandingPage(AcceptanceTester $I)
     {
-		$I->wantTo('Check if site running');
+		$I->wantTo('Check if landing page visible');
         $I->amOnPage('/');
 		$I->see('Time-spotter');
 		$I->cantSee('A tool to monitor your time');
