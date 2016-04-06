@@ -11,6 +11,11 @@ class UsersCest
     {
     }
 
+	const btnLogin = ['css' => '#frmLogin #btnLogin'];
+	const inputEmail = ['css' => '#frmLogin input[type=email][name=email]'];
+	const inputPassword = ['css' => '#frmLogin input[type=password][name=password]'];
+
+
 	/**
      * Test Login Page
      *
@@ -23,7 +28,9 @@ class UsersCest
 		$I->see('E-Mail Address');
 		$I->see('Password');
 		$I->see('Login');
-		$I->seeElement(['css' => 'form button[type=submit]']);
+		$I->seeElement(self::inputEmail);
+		$I->seeElement(self::inputPassword);
+		$I->seeElement(self::btnLogin);
     }
 	
 	/**
@@ -35,9 +42,9 @@ class UsersCest
     {
 		$I->wantTo('Check if required fields at login page works');
         $I->amOnPage('/login');
-		$I->fillField(['name' => 'email'], '');
-		$I->fillField(['name' => 'password'], '');
-		$I->click('form button[type=submit]');
+		$I->fillField(self::inputEmail, '');
+		$I->fillField(self::inputPassword, '');
+		$I->click(self::btnLogin);
 		$I->see('The email field is required');
 		$I->see('The password field is required');
     }
