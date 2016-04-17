@@ -161,13 +161,13 @@ class UsersCest
      * Test 404 Error page
      *
      * @return void
-    public function test404Page()
-    {
-        $this->get('asdasdjlapmnnk')
-            ->seeStatusCode(404)
-            ->see('404');
-    }
      */
+    public function test404Page(AcceptanceTester $I)
+    {
+		$I->wantTo('Check if 404 works');
+        $I->amOnPage('/asdasdjlapmnnk');
+		$I->see('Sorry, the page you are looking for could not be found.');
+    }
     /**
      * Test user registration
      *
@@ -184,19 +184,6 @@ class UsersCest
             ->seePageIs('/home')
             ->seeInDatabase('users', ['email' => 'sergiturbadenas@gmail.com',
                                       'name'  => 'Sergi Tur Badenas']);
-    }
-     */
-    /**
-     * Test required fields on registration page
-     *
-     * @return void
-    public function testRequiredFieldsOnRegistrationPage()
-    {
-        $this->visit('/register')
-            ->press('Register')
-            ->see('The name field is required')
-            ->see('The email field is required')
-            ->see('The password field is required');
     }
      */
     /**
