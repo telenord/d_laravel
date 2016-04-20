@@ -9,10 +9,14 @@ modules:
     enabled:
         - WebDriver
         - \Helper\Acceptance
+        - MailCatcher
     config:
         WebDriver:
             url: http://localhost:8383/
             browser: 'firefox'
+        MailCatcher:
+            url: 'http://127.0.0.1'
+            port: '11091'
 env:
     phantom:
          modules:

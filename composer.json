@@ -18,7 +18,7 @@
         "laracasts/integrated": "^0.15.6",
         "codeception/codeception": "*",
         "codeception/phpbuiltinserver": "*",
-        "captbaritone/mailcatcher-codeception-module": "*",
+        "captbaritone/mailcatcher-codeception-module": "^1.1",
         "site5/phantoman": "*"
     },
     "autoload": {
