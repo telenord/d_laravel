@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "d57e14e4d34ed2de3e4668ca8ab666bd",
-    "content-hash": "328fe7528b1598e484f1822d507d3298",
+    "hash": "91e1506a9bd3b83274f8862eb3d9998d",
+    "content-hash": "db6329730f45e5fe12de92e0b25f5fa3",
     "packages": [
         {
             "name": "barryvdh/laravel-debugbar",
@@ -898,6 +898,50 @@
                 "php"
             ],
             "time": "2016-04-19 13:41:41"
+        },
+        {
+            "name": "oprudkyi/laravel-mail-logger",
+            "version": "v1.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/oprudkyi/laravel-mail-logger.git",
+                "reference": "676e40b826353624c91136598d38665fb02671b7"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/oprudkyi/laravel-mail-logger/zipball/676e40b826353624c91136598d38665fb02671b7",
+                "reference": "676e40b826353624c91136598d38665fb02671b7",
+                "shasum": ""
+            },
+            "require": {
+                "illuminate/support": "5.0.*|5.1.*|5.2.*",
+                "php": ">=5.5.9"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Oprudkyi\\LaravelMailLogger\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Oleksii Prudkyi",
+                    "email": "Oleksii.Prudkyi@gmail.com"
+                }
+            ],
+            "description": "Enable debugging/logging communication with mail servers for Laravel 5.*",
+            "keywords": [
+                "debug",
+                "email",
+                "laravel",
+                "log",
+                "swiftmailer"
+            ],
+            "time": "2016-04-22 05:51:18"
         },
         {
             "name": "paragonie/random_compat",

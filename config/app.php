@@ -160,8 +160,7 @@ return [
 
 		Jrean\UserVerification\UserVerificationServiceProvider::class,
 
-		App\Providers\DebugMailServiceProvider::class, 
-
+		Oprudkyi\LaravelMailLogger\MailLoggerServiceProvider::class,
     ],
 
     /*
