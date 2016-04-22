@@ -33,6 +33,9 @@ Route::get('app_demo', function () {
 Route::group(['middleware' => 'web'], function () {
     Route::auth();
 
+    Route::get('verification/error', 'Auth\AuthController@getVerificationError');
+    Route::get('verification/{token}', 'Auth\AuthController@getVerification');
+
     Route::get('/home', 'HomeController@index');
 	
 	Route::get('/', function () {

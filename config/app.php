@@ -158,6 +158,10 @@ return [
 
 		Barryvdh\Debugbar\ServiceProvider::class,
 
+		Jrean\UserVerification\UserVerificationServiceProvider::class,
+
+		App\Providers\DebugMailServiceProvider::class, 
+
     ],
 
     /*
@@ -205,6 +209,8 @@ return [
         'View' => Illuminate\Support\Facades\View::class,
 
 		'Debugbar' => Barryvdh\Debugbar\Facade::class,
+		'UserVerification' => Jrean\UserVerification\Facades\UserVerification::class,
+
     ],
 
 ];

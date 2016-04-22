@@ -8,6 +8,11 @@ use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\ThrottlesLogins;
 use Illuminate\Foundation\Auth\AuthenticatesAndRegistersUsers;
 
+use Jrean\UserVerification\Traits\VerifiesUsers;
+use Jrean\UserVerification\Facades\UserVerification;
+use Illuminate\Http\Request;
+use Auth;
+
 class AuthController extends Controller
 {
     /*
@@ -22,6 +27,7 @@ class AuthController extends Controller
     */
 
     use AuthenticatesAndRegistersUsers, ThrottlesLogins;
+	use VerifiesUsers;
 
     /**
      * Where to redirect users after login / registration.
@@ -69,4 +75,36 @@ class AuthController extends Controller
             'password' => bcrypt($data['password']),
         ]);
     }
+
+    /**
+     * Handle a registration request for the application.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function register(Request $request)
+    {
+        $validator = $this->validator($request->all());
+
+        if ($validator->fails()) {
+            $this->throwValidationException(
+                $request, $validator
+            );
+        }
+		
+
+        $user = $this->create($request->all());
+
+        // Authenticating the user is not mandatory at all.
+        //Auth::login($user);
+		//Auth::guard($this->getGuard())->login($this->create($request->all()));
+		Auth::guard($this->getGuard())->login($user);
+
+        UserVerification::generate($user);
+
+        UserVerification::send($user, trans('registration.user-verification_email_subject'));
+
+        return redirect($this->redirectPath());
+    }
+
 }
