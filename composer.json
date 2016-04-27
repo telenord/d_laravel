@@ -21,7 +21,8 @@
         "codeception/codeception": "*",
         "codeception/phpbuiltinserver": "*",
         "captbaritone/mailcatcher-codeception-module": "^1.1",
-        "site5/phantoman": "*"
+        "site5/phantoman": "*",
+        "oprudkyi/codeception-events-scripting": "^1.0"
     },
     "autoload": {
         "classmap": [

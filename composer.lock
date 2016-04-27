@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "91e1506a9bd3b83274f8862eb3d9998d",
-    "content-hash": "db6329730f45e5fe12de92e0b25f5fa3",
+    "hash": "d85d13cb2af8a0f76a46d19aaa36b378",
+    "content-hash": "6f7dee8ebf0dda7c1f5f061e151b60fd",
     "packages": [
         {
             "name": "barryvdh/laravel-debugbar",
@@ -2912,6 +2912,48 @@
                 "testing"
             ],
             "time": "2015-04-02 19:54:00"
+        },
+        {
+            "name": "oprudkyi/codeception-events-scripting",
+            "version": "v1.0.3",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/oprudkyi/codeception-events-scripting.git",
+                "reference": "6c603e2d4729fbd9f64d809e6804d1eb5a87638e"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/oprudkyi/codeception-events-scripting/zipball/6c603e2d4729fbd9f64d809e6804d1eb5a87638e",
+                "reference": "6c603e2d4729fbd9f64d809e6804d1eb5a87638e",
+                "shasum": ""
+            },
+            "require": {
+                "codeception/codeception": "~2.1.0",
+                "php": ">=5.5.9"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Codeception\\Extension\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Oleksii Prudkyi",
+                    "email": "Oleksii.Prudkyi@gmail.com"
+                }
+            ],
+            "description": "The Codeception extension for automatically running shell scripts on codeception events",
+            "keywords": [
+                "codeception",
+                "extension",
+                "shell"
+            ],
+            "time": "2016-04-26 00:09:17"
         },
         {
             "name": "phpdocumentor/reflection-docblock",
