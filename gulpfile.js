@@ -23,6 +23,7 @@ var paths = {
 , 'fontawesome': './vendor/bower_components/font-awesome/'
 , 'datatables': './vendor/bower_components/datatables/media/'
 , 'adminlte': './vendor/bower_components/AdminLTE/dist/'
+, 'bootstrap_notify': './vendor/bower_components/remarkable-bootstrap-notify/dist/'
 }
 
 elixir(function(mix) {
@@ -37,12 +38,17 @@ elixir(function(mix) {
         .copy(paths.bootstrap + 'fonts/bootstrap/**', 'public/fonts/bootstrap')
         .copy(paths.fontawesome + 'fonts/**', 'public/fonts/fontawesome')
         .scripts([
+			'./resources/javascripts/error/_error_handler.js',
             paths.jquery + "dist/jquery.js",
+			'./resources/javascripts/error/jquery_error_handler.js',
             paths.datatables + "js/jquery.dataTables.js",
             paths.bootstrap + "javascripts/bootstrap.js",
             paths.datatables + "js/dataTables.bootstrap.js",
             paths.adminlte + "js/app.js",
-            './resources/javascripts/**/*.js',
+            paths.bootstrap_notify + "bootstrap-notify.js",
+            './resources/javascripts/common/**/*.js',
+            './resources/javascripts/anon/**/*.js',
+            './resources/javascripts/logged/**/*.js',
         ], 'public/js/app.js', './')
         .version([
             'css/app.css',

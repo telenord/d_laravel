@@ -1,7 +1,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title> AdminLTE 2 with Laravel - @yield('htmlheader_title', 'Your title here') </title>
+	<title> {{ trans('app.name') }} - @yield('htmlheader_title', 'Your title here') </title>
 	
 	@include('layouts.partials.auth.jsvariables')
 

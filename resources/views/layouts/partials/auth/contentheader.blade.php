@@ -1,3 +1,6 @@
+{{-- if box then skip --}}
+@hasSection('simple_box_title')
+@else
 <!-- Content Header (Page header) -->
 <section class="content-header">
     <h1>
@@ -11,3 +14,4 @@
     </ol>
 -->
 </section>
+@endif
