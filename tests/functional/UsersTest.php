@@ -30,7 +30,7 @@ class UsersTest extends TransactionsTestCase
      */
     public function testLogin()
     {
-        $user = factory(App\Models\User::class)->create(['password' => Hash::make('passw0RD')]);
+        $user = factory(App\Models\User::class)->create(['password' => Hash::make('passw0RD'), 'verified' => 1]);
         $this->visit('/login')
             ->type($user->email, 'email')
             ->type('passw0RD', 'password')
@@ -135,7 +135,7 @@ class UsersTest extends TransactionsTestCase
             ->type('passw0RD', 'password')
             ->type('passw0RD', 'password_confirmation')
             ->press('Register')
-            ->seePageIs('/home')
+            ->seePageIs('/verification/email_not_verified')
             ->seeInDatabase('users', ['email' => 'sergiturbadenas@gmail.com',
                                       'name'  => 'Sergi Tur Badenas']);
     }

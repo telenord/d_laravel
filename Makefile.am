@@ -38,52 +38,32 @@ CLEANFILES = $(check_SCRIPTS)
 #mailcatcher ----------------------------------
 
 MAILCATCHER = vendor/ruby/bin/mailcatcher
-MAILCATCHER_RUNNER = GEM_HOME=vendor/ruby $(MAILCATCHER)
 
 $(MAILCATCHER) :
 	$(GEM) install mailcatcher --no-format-executable --install-dir vendor/ruby --no-document
 
-mailcatcher_start : $(MAILCATCHER) mailcatcher_stop_pre
-	echo "Start mailcatcher"
-	$(MAILCATCHER_RUNNER) --ip 127.0.0.1 --smtp-port 11031 --http-port 11091
-	
-
-mailcatcher_stop_pre mailcatcher_stop:
-	echo "Stop mailcatcher"
-	-$(CURL) -v -X DELETE http://127.0.0.1:11091
-
-.PHONY: mailcatcher_start mailcatcher_stop mailcatcher_stop_pre
-.NOTPARALLEL: $(MAILCATCHER) mailcatcher_stop_pre
 
 #----------------------------------------------
 ARTISAN = ./artisan
 
 #probably TESTS
-check-local: $(check_SCRIPTS) check_testing_db_seed check_functional
+check-local: $(check_SCRIPTS) check_functional
 
-.PHONY: check_testing_db_seed check_functional check_codecept
+.PHONY: check_functional check_codecept
 
 check_functional: check_codecept
 
 check_codecept:
 	$(CODECEPT) run functional
 
-check_testing_db_seed: 
-	$(ARTISAN) db:seed-test --env=testing
-
-
 #codecept acceptance testing ------------------
 
-.PHONY: check_testing_db_seed check_acceptance check_acceptance_long
+.PHONY: check_acceptance 
 
-check-acceptance-local: $(MAILCATCHER) $(check_SCRIPTS) check_testing_db_seed check_acceptance_long
-
-.NOTPARALLEL: check_acceptance mailcatcher_start mailcatcher_stop
+check-acceptance-local: $(MAILCATCHER) $(check_SCRIPTS) check_acceptance
 
 check_acceptance: 
 	$(CODECEPT) run --env phantom acceptance
 
-#!!!on error mailcatcher won't stopped
-check_acceptance_long: mailcatcher_start check_acceptance mailcatcher_stop 
 
 
