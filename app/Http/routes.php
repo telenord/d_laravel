@@ -33,8 +33,12 @@ Route::get('app_demo', function () {
 Route::group(['middleware' => 'web'], function () {
     Route::auth();
 
+	//email verification 
+	Route::get('verification/email_not_verified', ['as'=> 'verification.email_not_verified', 'uses' => 'Auth\EmailVerificationController@emailNotVerified']);
+	Route::any('verification/resend_verification_email', ['as'=> 'verification.resend_verification_email', 'uses' => 'Auth\EmailVerificationController@resendVerificationEmail']);
     Route::get('verification/error', 'Auth\AuthController@getVerificationError');
     Route::get('verification/{token}', 'Auth\AuthController@getVerification');
+
 
     Route::get('/home', 'HomeController@index');
 	
