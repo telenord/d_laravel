@@ -1,6 +1,8 @@
 @extends('layouts.landing')
 
-@section('contentheader_title', 'Welcome to Time-Spotter')
+@section('contentheader_title')
+	Please register to {{ trans('app.name') }}
+@endsection
 
 @section('content')
 <div class="container">

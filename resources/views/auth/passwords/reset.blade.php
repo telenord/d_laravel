@@ -1,4 +1,8 @@
-@extends('layouts.app')
+@extends('layouts.landing')
+
+@section('contentheader_title')
+	Reset password for {{ trans('app.name') }}
+@endsection
 
 @section('content')
 <div class="container">
@@ -8,7 +12,7 @@
                 <div class="panel-heading">Reset Password</div>
 
                 <div class="panel-body">
-                    <form class="form-horizontal" role="form" method="POST" action="{{ url('/password/reset') }}">
+                    <form id="frmReset" class="form-horizontal" role="form" method="POST" action="{{ url('/password/reset') }}">
                         {!! csrf_field() !!}
 
                         <input type="hidden" name="token" value="{{ $token }}">
@@ -56,7 +60,7 @@
 
                         <div class="form-group">
                             <div class="col-md-6 col-md-offset-4">
-                                <button type="submit" class="btn btn-primary">
+                                <button id="btnReset" type="submit" class="btn btn-primary">
                                     <i class="fa fa-btn fa-refresh"></i>Reset Password
                                 </button>
                             </div>

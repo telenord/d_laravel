@@ -1,5 +1,6 @@
 <?php
 
+use Step\Acceptance\Member as MemberTester;
 
 class UsersCest
 {
@@ -63,21 +64,21 @@ class UsersCest
 		$I->resetEmails();
         $I->amOnPage('/register');
 
-		$I->fillField(self::inputRegisterName, 'Test user name');
-		$I->fillField(self::inputRegisterEmail, 'test.user@example.com');
-		$I->fillField(self::inputRegisterPassword, 'passw0RD');
-		$I->fillField(self::inputRegisterConfirmPassword, 'passw0RD');
+		$I->fillField(self::inputRegisterName, MemberTester::$username);
+		$I->fillField(self::inputRegisterEmail, MemberTester::$email);
+		$I->fillField(self::inputRegisterPassword, MemberTester::$password);
+		$I->fillField(self::inputRegisterConfirmPassword, MemberTester::$password);
 		$I->click(self::btnRegister);
 
 		//redirects to email verification page
 		$I->seeInCurrentUrl('/verification/email_not_verified');
 		$I->see('Your email isn\'t verified.');
 		$I->see('Please check your mail box and click the link sent to you in verification email.');
-		$I->see('Test user name');
+		$I->see(MemberTester::$username);
 		
 		//email received
 		$I->seeEmailCount(1);
-		$I->seeInLastEmailTo('test.user@example.com', 'Welcome to Time-Spotter');
+		$I->seeInLastEmailTo(MemberTester::$email, 'Welcome to Time-Spotter');
 		$I->seeInLastEmail('Please click here to verify your email address:');
 		$I->seeInLastEmail('If you did not sign up to create a profile on Time-Spotter, please inform us by replying to this email. Thank you!');
 		$I->seeInLastEmail('The Time-Spotter Team');
@@ -89,7 +90,7 @@ class UsersCest
 		
 		//email received
 		$I->seeEmailCount(1);
-		$I->seeInLastEmailTo('test.user@example.com', 'Welcome to Time-Spotter');
+		$I->seeInLastEmailTo(MemberTester::$email, 'Welcome to Time-Spotter');
 		$I->seeInLastEmail('Please click here to verify your email address:');
 
 		//get verification link from email
@@ -97,64 +98,39 @@ class UsersCest
         $I->amOnUrl($verificationLink[1]);
 
 		$I->seeInCurrentUrl('/home');
-		$I->see('Test user name');
+		$I->see(MemberTester::$username);
 		$I->see('You are logged in!');
 	}
 	
-
-	const btnLogin = ['css' => '#frmLogin #btnLogin'];
-	const inputLoginEmail = ['css' => '#frmLogin input[type=email][name=email]'];
-	const inputLoginPassword = ['css' => '#frmLogin input[type=password][name=password]'];
-
-
-	/**
-     * Test Login Page
-     *
-     * @return void
-     */
-    public function testLoginPage(AcceptanceTester $I)
-    {
-		$I->wantTo('Check if login page visible');
-        $I->amOnPage('/login');
-		$I->see('E-Mail Address');
-		$I->see('Password');
-		$I->see('Login');
-		$I->seeElement(self::inputLoginEmail);
-		$I->seeElement(self::inputLoginPassword);
-		$I->seeElement(self::btnLogin);
-    }
 	
 	/**
      * Test Login
      *
      * @return void
      */
-    public function testLoginRequiredFields(AcceptanceTester $I)
+    public function testLoginRequiredFields(AcceptanceTester $I, \Page\Acceptance\Login $loginPage)
     {
 		$I->wantTo('Check if required fields at login page works');
-        $I->amOnPage('/login');
-		$I->fillField(self::inputLoginEmail, '');
-		$I->fillField(self::inputLoginPassword, '');
-		$I->click(self::btnLogin);
+		$loginPage->login('', '');
 		$I->see('The email field is required');
 		$I->see('The password field is required');
     }
 	
-	/**
-     * Test Login
-     *
-     * @return void
-    public function testLogin()
+	public function testLoginLogout(MemberTester $I, \Page\Acceptance\Login $loginPage)
     {
-        $user = factory(App\Models\User::class)->create(['password' => Hash::make('passw0RD')]);
-        $this->visit('/login')
-            ->type($user->email, 'email')
-            ->type('passw0RD', 'password')
-            ->press('Login')
-            ->seePageIs('/home')
-            ->see($user->name);
+		$I->wantTo('Check if user can login/logout');
+		$I->loginAsUser($loginPage);
+		$I->seeInCurrentUrl('/home');
+		$I->see(MemberTester::$username);
+		$I->see('You are logged in!');
+        $I->amOnPage('/logout');
+		$I->seeInCurrentUrl('/');
     }
-    */
+	
+	const btnReset = ['css' => '#frmReset #btnReset'];
+	const inputResetEmail = ['css' => '#frmReset input[type=email][name=email]'];
+	const inputResetPassword = ['css' => '#frmReset input[type=password][name=password]'];
+	const inputResetConfirmPassword = ['css' => '#frmReset input[type=password][name=password_confirmation]'];
 
     /**
      * Test Password reset Page
@@ -168,7 +144,58 @@ class UsersCest
 		$I->see('Reset Password');
 		$I->see('E-Mail Address');
 		$I->see('Send Password Reset Link');
-		$I->seeElement(['css' => 'form button[type=submit]']);
+		$I->seeElement(self::btnReset);
+		$I->seeElement(self::inputResetEmail);
+    }
+	
+    /**
+     * Test password reset page visible
+     *
+     * @return void
+     */
+	public function testSendPasswordResetUserNotExists(AcceptanceTester $I)
+    {
+		$I->wantTo('Check if send password reset user not exists');
+        $I->amOnPage('/password/reset');
+		$I->fillField(self::inputResetEmail, 'notexistingemail@example.com');
+		$I->click(self::btnReset);
+		$I->see('We can\'t find a user with that e-mail address.');
+    }
+	
+	/**
+     * Test send password reset
+     *
+     * @return void
+     */
+	public function testSendPasswordReset(AcceptanceTester $I)
+    {
+		$I->wantTo('Check if send password reset works');
+		$I->resetEmails();
+        $I->amOnPage('/password/reset');
+		$I->fillField(self::inputResetEmail, MemberTester::$email);
+		$I->click(self::btnReset);
+		$I->waitForText('We have e-mailed your password reset link!');
+		
+		//email received
+		$I->seeEmailCount(1);
+		$I->seeInLastEmailTo(MemberTester::$email, 'Your Password Reset Link');
+		$I->seeInLastEmail('Please click here to reset your password:');
+		$I->seeInLastEmail('If you did not ask to reset password at Time-Spotter, please ignore this email. Thank you!');
+		$I->seeInLastEmail('The Time-Spotter Team');
+
+		//get verification link from email
+		$verificationLink = $I->grabMatchesFromLastEmail('@href="([^"]*)"@');
+        $I->amOnUrl($verificationLink[1]);
+
+		$I->seeInCurrentUrl('/password/reset');
+		$I->see('Reset password for Time-Spotter');
+		
+		$I->fillField(self::inputResetEmail, MemberTester::$email);
+		$I->fillField(self::inputResetPassword, MemberTester::$password);
+		$I->fillField(self::inputResetConfirmPassword, MemberTester::$password);
+		$I->click(self::btnReset);
+		$I->see(MemberTester::$username);
+		$I->see('You are logged in!');
     }
 	
 	/**
@@ -184,30 +211,6 @@ class UsersCest
     }
 
     /**
-     * Test home page works with Authenticated Users
-     *
-     * @return void
-    public function testHomePageForAuthenticatedUsers()
-    {
-        $user = factory(App\Models\User::class)->create();
-        $this->actingAs($user)
-            ->visit('/home')
-            ->see($user->name);
-    }
-     */
-    /**
-     * Test log out
-     *
-     * @return void
-    public function testLogout()
-    {
-        $user = factory(App\Models\User::class)->create();
-        $this->actingAs($user)
-            ->visit('/logout')
-            ->seePageIs('/');
-    }
-     */
-    /**
      * Test 404 Error page
      *
      * @return void
@@ -218,29 +221,4 @@ class UsersCest
         $I->amOnPage('/asdasdjlapmnnk');
 		$I->see('Sorry, the page you are looking for could not be found.');
     }
-    /**
-     * Test send password reset
-     *
-     * @return void
-    public function testSendPasswordReset()
-    {
-        $user = factory(App\Models\User::class)->create();
-        $this->visit('password/reset')
-            ->type($user->email, 'email')
-            ->press('Send Password Reset Link')
-            ->see('We have e-mailed your password reset link!');
-    }
-     */
-    /**
-     * Test send password reset user not exists
-     *
-     * @return void
-    public function testSendPasswordResetUserNotExists()
-    {
-        $this->visit('password/reset')
-            ->type('notexistingemail@gmail.com', 'email')
-            ->press('Send Password Reset Link')
-            ->see('We can\'t find a user with that e-mail address.');
-    }
-     */
 }
