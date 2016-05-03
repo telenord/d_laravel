@@ -78,10 +78,10 @@ class UsersCest
 		
 		//email received
 		$I->seeEmailCount(1);
-		$I->seeInLastEmailTo(MemberTester::$email, 'Welcome to Time-Spotter');
+		$I->seeInLastEmailTo(MemberTester::$email, 'Welcome to ' . AcceptanceTester::$applicationName);
 		$I->seeInLastEmail('Please click here to verify your email address:');
-		$I->seeInLastEmail('If you did not sign up to create a profile on Time-Spotter, please inform us by replying to this email. Thank you!');
-		$I->seeInLastEmail('The Time-Spotter Team');
+		$I->seeInLastEmail('If you did not sign up to create a profile on ' . AcceptanceTester::$applicationName . ', please inform us by replying to this email. Thank you!');
+		$I->seeInLastEmail('The ' . AcceptanceTester::$applicationName . ' Team');
 		
 		//resend verification email
 		$I->resetEmails();
@@ -90,7 +90,7 @@ class UsersCest
 		
 		//email received
 		$I->seeEmailCount(1);
-		$I->seeInLastEmailTo(MemberTester::$email, 'Welcome to Time-Spotter');
+		$I->seeInLastEmailTo(MemberTester::$email, 'Welcome to ' . AcceptanceTester::$applicationName);
 		$I->seeInLastEmail('Please click here to verify your email address:');
 
 		//get verification link from email
@@ -180,15 +180,15 @@ class UsersCest
 		$I->seeEmailCount(1);
 		$I->seeInLastEmailTo(MemberTester::$email, 'Your Password Reset Link');
 		$I->seeInLastEmail('Please click here to reset your password:');
-		$I->seeInLastEmail('If you did not ask to reset password at Time-Spotter, please ignore this email. Thank you!');
-		$I->seeInLastEmail('The Time-Spotter Team');
+		$I->seeInLastEmail('If you did not ask to reset password at ' . AcceptanceTester::$applicationName . ', please ignore this email. Thank you!');
+		$I->seeInLastEmail('The ' . AcceptanceTester::$applicationName . ' Team');
 
 		//get verification link from email
 		$verificationLink = $I->grabMatchesFromLastEmail('@href="([^"]*)"@');
         $I->amOnUrl($verificationLink[1]);
 
 		$I->seeInCurrentUrl('/password/reset');
-		$I->see('Reset password for Time-Spotter');
+		$I->see('Reset password for ' . AcceptanceTester::$applicationName);
 		
 		$I->fillField(self::inputResetEmail, MemberTester::$email);
 		$I->fillField(self::inputResetPassword, MemberTester::$password);
