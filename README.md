@@ -39,6 +39,35 @@ Introduction
 
 Just base functionality for other projects
 
+Creation of new site based on starter kit
+============
+
+```sh
+#clone original repository
+git clone git@gitlab.com:oprudkyi/laravel-bootstrap-adminlte-starter-kit.git
+
+#delete origin
+git remote rm origin
+
+#use your new repository as main source 
+git remote add origin git@gitlab.com:oprudkyi/web-site.git
+
+#keep original source for updates
+git remote add starter-kit git@gitlab.com:oprudkyi/laravel-bootstrap-adminlte-starter-kit.git
+
+#push to your repository
+git push -u origin master
+```
+
+Keeping your site in sync with starter kit
+============
+
+```sh
+git fetch starter-kit
+git merge starter-kit/master
+git push
+```
+
 
 Installation
 ============
