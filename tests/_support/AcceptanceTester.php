@@ -24,5 +24,6 @@ class AcceptanceTester extends \Codeception\Actor
     * Define custom actions here
     */
 
-	public static $applicationName = 'Time-Spotter';
+	public static $applicationName = 'Starter-Kit app.name';
+	public static $applicationDescription = 'Base functionality for other projects';
 }
