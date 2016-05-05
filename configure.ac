@@ -54,6 +54,8 @@ AM_EXTRA_RECURSIVE_TARGETS([
 							download-dependencies 
 							check-acceptance
 							check-functional
+							run-mailcatcher
+							stop-mailcatcher
 							])
 AC_CONFIG_FILES([
 				 Makefile

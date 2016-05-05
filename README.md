@@ -106,3 +106,35 @@ the unit tests defined in each of the client libraries. If a single
 language fails, the make check will continue on and provide a synopsis
 at the end.
 
+
+Boostraping development environment
+===================================
+
+```sh
+cp .env.example .env
+vim .env
+
+#for sqlite db
+touch storage/database/play.sqlite
+./artisan migrate
+
+#generate key
+./artisan key:generate -v
+```
+
+Mailcatcher integration
+======================
+
+Mailcatcher is configured in the .env.example for port 1025, 
+tests use different port (11031) so tests can be run while development instance of maicatcher is running 
+
+Run:
+
+	make run-mailcatcher
+
+Stop:
+
+	make stop-mailcatcher
+
+Mailcatcher web gui available via http://127.0.0.1:1080/	
+

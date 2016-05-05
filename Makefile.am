@@ -38,9 +38,18 @@ CLEANFILES = $(check_SCRIPTS)
 #mailcatcher ----------------------------------
 
 MAILCATCHER = vendor/ruby/bin/mailcatcher
+MAILCATCHER_RUNNER = GEM_HOME=vendor/ruby $(MAILCATCHER)
 
 $(MAILCATCHER) :
 	$(GEM) install mailcatcher --no-format-executable --install-dir vendor/ruby --no-document
+
+run-mailcatcher-local: $(MAILCATCHER)
+	echo "Start mailcatcher"
+	$(MAILCATCHER_RUNNER) --ip 127.0.0.1 --smtp-port 1025 --http-port 1080
+
+stop-mailcatcher-local:
+	echo "Stop mailcatcher"
+	-$(CURL) -v -X DELETE http://127.0.0.1:1080
 
 
 #----------------------------------------------
@@ -64,6 +73,5 @@ check-acceptance-local: $(MAILCATCHER) $(check_SCRIPTS) check_acceptance
 
 check_acceptance: 
 	$(CODECEPT) run --env phantom acceptance
-
 
 
