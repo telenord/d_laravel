@@ -53,6 +53,7 @@ fi
 AM_EXTRA_RECURSIVE_TARGETS([
 							download-dependencies 
 							check-acceptance
+							check-functional
 							])
 AC_CONFIG_FILES([
 				 Makefile

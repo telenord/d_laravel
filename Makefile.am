@@ -47,18 +47,18 @@ $(MAILCATCHER) :
 ARTISAN = ./artisan
 
 #probably TESTS
-check-local: $(check_SCRIPTS) check_functional
+check-local: $(MAILCATCHER) $(check_SCRIPTS) check_functional
 
-.PHONY: check_functional check_codecept
+.PHONY: check_functional check-functional-local
 
-check_functional: check_codecept
-
-check_codecept:
+check_functional: 
 	$(CODECEPT) run functional
+
+check-functional-local: $(MAILCATCHER) $(check_SCRIPTS) check_functional
 
 #codecept acceptance testing ------------------
 
-.PHONY: check_acceptance 
+.PHONY: check_acceptance check-acceptance-local
 
 check-acceptance-local: $(MAILCATCHER) $(check_SCRIPTS) check_acceptance
 
