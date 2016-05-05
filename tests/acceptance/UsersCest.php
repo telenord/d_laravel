@@ -61,6 +61,7 @@ class UsersCest
     public function testNewUserRegistration(AcceptanceTester $I)
     {
 		$I->wantTo('Check if register page works');
+		$I->resizeWindow(1024, 768);
 		$I->resetEmails();
         $I->amOnPage('/register');
 

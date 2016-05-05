@@ -16,11 +16,11 @@ class LandingCest
     {
 		$I->wantTo('Check if landing page visible');
         $I->amOnPage('/');
-		$I->see('Time-spotter');
-		$I->cantSee('A tool to monitor your time');
+		$I->see(AcceptanceTester::$applicationName);
+		$I->cantSee(AcceptanceTester::$applicationDescription);
 		$I->resizeWindow(1024, 768);
 		$I->scrollTo(['class' => 'main-footer']);
-		$I->canSee('A tool to monitor your time');
+		$I->canSee(AcceptanceTester::$applicationDescription);
 		$I->seeInCurrentUrl('/');
 	}
 }
