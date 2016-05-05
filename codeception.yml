@@ -32,6 +32,10 @@ extensions:
               - command: ./artisan db:seed-test --env=testing
                 description: Reset db and seed
           BeforeSuite:
+              - command: curl -s -X DELETE http://127.0.0.1:11091
+                suites: ['acceptance', 'functional'] 
+                description: Stop mailcatcher
+                ignoreErrors: true
               - command: GEM_HOME=vendor/ruby vendor/ruby/bin/mailcatcher --ip 127.0.0.1 --smtp-port 11031 --http-port 11091
                 suites: ['acceptance', 'functional'] 
                 description: Start mailcatcher
