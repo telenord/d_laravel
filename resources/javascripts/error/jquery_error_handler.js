@@ -146,7 +146,7 @@
 		}
 
 		return result;
-	}
+	};
 
 	var jQuery_ajax_prefilters;
 	if (!jQuery_ajax_prefilters) {

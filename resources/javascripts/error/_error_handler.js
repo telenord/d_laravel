@@ -9,7 +9,7 @@ var showUncaughtException = function(message) {
 		return false;
 	}
 	alert(message);
-}
+};
 
 window.onerror = function (errorMsg, url, lineNumber, column, errorObj) {
 	"use strict";
@@ -26,4 +26,4 @@ window.onerror = function (errorMsg, url, lineNumber, column, errorObj) {
         
     // Tell browser to run its own error handler as well   
     return false;
-}
+};
