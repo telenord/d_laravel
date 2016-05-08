@@ -24,6 +24,7 @@ var paths = {
 , 'datatables': './vendor/bower_components/datatables/media/'
 , 'adminlte': './vendor/bower_components/AdminLTE/dist/'
 , 'bootstrap_notify': './vendor/bower_components/remarkable-bootstrap-notify/dist/'
+, 'bower_components': './vendor/bower_components/'
 , 'starterkit': './resources/assets/sass/starterkit/'
 }
 
@@ -33,6 +34,7 @@ elixir(function(mix) {
 				paths.bootstrap + 'stylesheets'
 					, paths.fontawesome + 'scss'
 					, paths.datatables + 'css'
+					, paths.bower_components + 'eonasdan-bootstrap-datetimepicker/src/sass'
 					, paths.adminlte + 'css'
 					, paths.adminlte + 'css/skins'
 					, paths.starterkit
@@ -43,9 +45,11 @@ elixir(function(mix) {
 			'./resources/javascripts/error/_error_handler.js',
             paths.jquery + "dist/jquery.js",
 			'./resources/javascripts/error/jquery_error_handler.js',
+            paths.bower_components + "moment/min/moment.min.js",
             paths.datatables + "js/jquery.dataTables.js",
             paths.bootstrap + "javascripts/bootstrap.js",
             paths.datatables + "js/dataTables.bootstrap.js",
+            paths.bower_components + "eonasdan-bootstrap-datetimepicker/src/js/bootstrap-datetimepicker.js",
             paths.adminlte + "js/app.js",
             paths.bootstrap_notify + "bootstrap-notify.js",
             './resources/javascripts/common/**/*.js',
@@ -55,5 +59,5 @@ elixir(function(mix) {
         .version([
             'css/app.css',
             'js/app.js'
-        ])
+        ]);
 });

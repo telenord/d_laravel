@@ -12,6 +12,8 @@ template for websites with basic functionality implemented
 	- jQuery 
 	- fontawesome
 	- datatables
+	- moment (https://github.com/moment/moment)
+	- bootstrap datetimepciker (https://github.com/Eonasdan/bootstrap-datetimepicker)
 
 - testing:
 	- codeception
@@ -137,4 +139,30 @@ Stop:
 	make stop-mailcatcher
 
 Mailcatcher web gui available via http://127.0.0.1:1080/	
+
+
+Javascript/Css assets
+====================
+
+Intergration is based on [Laravel Elixir](https://laravel.com/docs/master/elixir) and 
+[Bower](http://bower.io) as package system (packages installed into vendor/bower_components). 
+
+To call bower use something like 
+
+```sh
+node_modules/.bin/bower install "eonasdan-bootstrap-datetimepicker#latest" --save
+```
+
+or update current dependencies
+
+```sh
+node_modules/.bin/bower install
+```
+
+The building script is gulpfile.js. System is configured to generate single js file from all packages provided (as well single css file)  
+
+You may need to edit resources/assets/sass/app.scss as well for css/scss 
+
+use 'gulp' or 'gulp watch' to compile resources
+
 
