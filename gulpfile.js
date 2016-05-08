@@ -24,16 +24,18 @@ var paths = {
 , 'datatables': './vendor/bower_components/datatables/media/'
 , 'adminlte': './vendor/bower_components/AdminLTE/dist/'
 , 'bootstrap_notify': './vendor/bower_components/remarkable-bootstrap-notify/dist/'
+, 'starterkit': './resources/assets/sass/starterkit/'
 }
 
 elixir(function(mix) {
-    mix.sass('*.scss', 'public/css/'
+    mix.sass('app.scss', 'public/css/'
 			, {includePaths: [
 				paths.bootstrap + 'stylesheets'
 					, paths.fontawesome + 'scss'
 					, paths.datatables + 'css'
 					, paths.adminlte + 'css'
 					, paths.adminlte + 'css/skins'
+					, paths.starterkit
 			] })
         .copy(paths.bootstrap + 'fonts/bootstrap/**', 'public/fonts/bootstrap')
         .copy(paths.fontawesome + 'fonts/**', 'public/fonts/fontawesome')
