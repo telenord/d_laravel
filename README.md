@@ -161,8 +161,13 @@ node_modules/.bin/bower install
 
 The building script is gulpfile.js. System is configured to generate single js file from all packages provided (as well single css file)  
 
-You may need to edit resources/assets/sass/app.scss as well for css/scss 
+if you add/remove packages, you may also need to edit resources/assets/sass/app.scss as well for adding/removing css/scss/js 
 
 use 'gulp' or 'gulp watch' to compile resources
+
+custom css rules you can add to resources/assets/sass/starterkit/starter-kit-customize.scss
+it's applied after any other css, so it's possible to change any css behavior here
+
+
 
 
