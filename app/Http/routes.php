@@ -43,6 +43,6 @@ Route::group(['middleware' => 'web'], function () {
     Route::get('verification/{token}', 'Auth\AuthController@getVerification');
 
 
-    Route::get('/home', 'HomeController@index');
+    Route::get('/home', ['as'=> 'user.home', 'uses' => 'HomeController@index']);
     Route::get('/', 'HomeController@indexPublic');
 });
