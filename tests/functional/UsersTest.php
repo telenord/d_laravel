@@ -1,4 +1,8 @@
 <?php
+/*
+ * based on https://github.com/acacha/adminlte-laravel/blob/master/tests/AcachaAdminLTELaravelTest.php
+ */
+
 use Illuminate\Foundation\Testing\WithoutMiddleware;
 use Illuminate\Foundation\Testing\DatabaseMigrations;
 use Illuminate\Foundation\Testing\DatabaseTransactions;

@@ -25,37 +25,52 @@ if test "$enable_tests" = "no"; then
 	have_tests="no"
 fi
 AM_CONDITIONAL(WITH_TESTS, [test "$have_tests" = "yes"])
+	
+#check php unit
+AC_PATH_PROG([PHPUNIT], [phpunit])
+AM_CONDITIONAL(HAVE_PHPUNIT, [test "x$PHPUNIT" != "x"])
+	
+#node npm
+AC_PATH_PROG([NPM], [npm])
+AM_CONDITIONAL(HAVE_NPM, [test "x$NPM" != "x"])
+	
+#ruby gem
+AC_PATH_PROG([GEM], [gem])
+AM_CONDITIONAL(HAVE_GEM, [test "x$GEM" != "x"])
+
+#curl
+AC_PATH_PROG([CURL], [curl])
+AM_CONDITIONAL(HAVE_CURL, [test "x$CURL" != "x"])
+
+#git
+AC_PATH_PROG([GIT], [git])
+AM_CONDITIONAL(HAVE_GIT, [test "x$GIT" != "x"])
 
 #phpunit is need for tests
 if test "$have_tests" = "yes" ; then
 	#check php unit
-	AC_PATH_PROG([PHPUNIT], [phpunit])
-	AM_CONDITIONAL(HAVE_PHPUNIT, [test "x$PHPUNIT" != "x"])
 	AM_COND_IF([HAVE_PHPUNIT],,[AC_MSG_ERROR([required program 'phpunit' not found.])])
 	
 	#node npm
-	AC_PATH_PROG([NPM], [npm])
-	AM_CONDITIONAL(HAVE_NPM, [test "x$NPM" != "x"])
 	AM_COND_IF([HAVE_NPM],,[AC_MSG_ERROR([required program 'npm' not found.])])
 	
 	#ruby gem
-	AC_PATH_PROG([GEM], [gem])
-	AM_CONDITIONAL(HAVE_GEM, [test "x$GEM" != "x"])
 	AM_COND_IF([HAVE_GEM],,[AC_MSG_ERROR([required program 'gem' not found.])])
 	
 	#curl
-	AC_PATH_PROG([CURL], [curl])
-	AM_CONDITIONAL(HAVE_CURL, [test "x$CURL" != "x"])
 	AM_COND_IF([HAVE_CURL],,[AC_MSG_ERROR([required program 'curl' not found.])])
 
 fi
 
 AM_EXTRA_RECURSIVE_TARGETS([
+							download-dependencies-production
 							download-dependencies 
+							update-downloaded-dependencies
 							check-acceptance
 							check-functional
 							run-mailcatcher
 							stop-mailcatcher
+							merge-starterkit
 							])
 AC_CONFIG_FILES([
 				 Makefile

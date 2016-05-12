@@ -6,6 +6,10 @@ $(COMPOSER):
 	$(PHP) -r "readfile('https://getcomposer.org/installer');" > composer-setup.php
 	$(PHP) composer-setup.php
 	$(PHP) -r "unlink('composer-setup.php');"
+
+.PHONY: development_composer_packages
+
+development_composer_packages: $(COMPOSER)
 	$(PHP) $(COMPOSER) install
 
 BOWER = node_modules/.bin/bower
@@ -14,13 +18,36 @@ GULP = node_modules/.bin/gulp
 $(BOWER):
 	$(NPM) install
 
-download-dependencies-local: $(MAILCATCHER) $(COMPOSER) $(BOWER) others_install
+download-dependencies-local: $(MAILCATCHER) development_composer_packages $(BOWER) |  others_install
 
 .PHONY: others_install
 
 others_install:
 	$(BOWER) install
 	$(GULP)
+
+.PHONY: production_composer_packages
+
+production_composer_packages: $(COMPOSER)
+	$(PHP) $(COMPOSER) install --no-dev
+
+production_node_packages:
+	$(NPM) install --only=production
+
+download-dependencies-production-local: production_composer_packages production_node_packages | others_install
+
+.PHONY: rm_composer update_deps
+
+rm_composer: 
+	$(RM) -r composer.phar
+
+update_deps:
+	$(PHP) $(COMPOSER) update
+	$(NPM) update
+	$(BOWER) update
+	$(GULP)
+
+update-downloaded-dependencies-local: | rm_composer $(COMPOSER) update_deps
 
 #codecept and generated files ------------------
 
@@ -74,4 +101,14 @@ check-acceptance-local: $(MAILCATCHER) $(check_SCRIPTS) check_acceptance
 check_acceptance: 
 	$(CODECEPT) run --env phantom acceptance
 
+#clean --------------------------------------
+clean-local:
+	$(RM) -r composer.phar node_modules vendor
+
+
+#merge-starterkit---------------------------
+
+merge-starterkit-local: 
+	$(GIT) fetch starter-kit
+	$(GIT) merge starter-kit/master -m "merging starterkit updates"
 

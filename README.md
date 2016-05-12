@@ -73,6 +73,12 @@ git merge starter-kit/master
 git push
 ```
 
+or 
+```sh
+make merge-starterkit
+git push
+```
+
 
 Installation
 ============
@@ -177,6 +183,13 @@ Manual Deployment
 This isn't adivsed , just for info:
 
 * First, clone your repository to production/staging server 
+    
+* configure production environment
+```sh
+	./bootstrap.sh
+	./configure --enable-tests=no
+	make download-dependencies-production
+```
 
 * create db (in case of mysql)
 ```sh
@@ -197,24 +210,38 @@ vim .env
 
 * create key
 
-	php artisan key:generate
+```sh
+php artisan key:generate
+```
 
 * migrate db
 
-	php artisan migrate
+```sh
+php artisan migrate
+```
 
 * optimize app
 
-	composer dump-autoload --optimize
+```sh
+php artisan clear-compiled
+composer dump-autoload --optimize
+```
 
 * clear cache
 
-	php artisan cache:clear
+```sh
+php artisan cache:clear
+
+```
 
 * caching 
 
-	php artisan config:cache
-	php artisan route:cache
+```sh
+php artisan config:cache
+php artisan route:cache
+php artisan optimize
+
+```
 
 
 
