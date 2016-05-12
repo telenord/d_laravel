@@ -176,12 +176,45 @@ Manual Deployment
 =================
 This isn't adivsed , just for info:
 
-First, clone your repository to production/staging server 
+* First, clone your repository to production/staging server 
 
-create env file
+* create db (in case of mysql)
+```sh
+sudo mysql 
+```
+
+```sql
+CREATE DATABASE IF NOT EXISTS starterkit_db CHARSET=utf8;
+CREATE USER 'starterkit_user'@'%' IDENTIFIED BY 'starterkit_password';
+GRANT ALL PRIVILEGES ON starterkit_db.* TO 'starterkit_user'@'%';
+```
+
+* create env file
 ```sh
 cp .env.example.production .env
 vim .env
 ```
+
+* create key
+
+	php artisan key:generate
+
+* migrate db
+
+	php artisan migrate
+
+* optimize app
+
+	composer dump-autoload --optimize
+
+* clear cache
+
+	php artisan cache:clear
+
+* caching 
+
+	php artisan config:cache
+	php artisan route:cache
+
 
 

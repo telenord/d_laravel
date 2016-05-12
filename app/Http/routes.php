@@ -10,14 +10,17 @@
 | and give it the controller to call when that URI is requested.
 |
 */
+	
+if (!App::environment('production')) {
+	Route::get('adminlte_demo', function () {
+		return view('adminlte_demo');
+	});
 
-Route::get('adminlte_demo', function () {
-    return view('adminlte_demo');
-});
+	Route::get('app_demo', function () {
+		return view('layouts/app');
+	});
+}
 
-Route::get('app_demo', function () {
-    return view('layouts/app');
-});
 /*
 |--------------------------------------------------------------------------
 | Application Routes
@@ -41,9 +44,5 @@ Route::group(['middleware' => 'web'], function () {
 
 
     Route::get('/home', 'HomeController@index');
-	
-	Route::get('/', function () {
-		return view('welcome');
-	});
-
+    Route::get('/', 'HomeController@indexPublic');
 });
