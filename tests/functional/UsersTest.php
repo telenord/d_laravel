@@ -119,7 +119,7 @@ class UsersTest extends TransactionsTestCase
     {
         $this->get('asdasdjlapmnnk')
             ->seeStatusCode(404)
-            ->see('404');
+            ->see('Sorry, the page you are looking for could not be found.');
     }
     /**
      * Test user registration
