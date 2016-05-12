@@ -46,7 +46,10 @@ Creation of new site based on starter kit
 
 ```sh
 #clone original repository
-git clone git@gitlab.com:oprudkyi/laravel-bootstrap-adminlte-starter-kit.git
+git clone git@gitlab.com:oprudkyi/laravel-bootstrap-adminlte-starter-kit.git my_project
+
+#cd to project
+cd my_project
 
 #delete origin
 git remote rm origin
@@ -169,5 +172,16 @@ custom css rules you can add to resources/assets/sass/starterkit/starter-kit-cus
 it's applied after any other css, so it's possible to change any css behavior here
 
 
+Manual Deployment
+=================
+This isn't adivsed , just for info:
+
+First, clone your repository to production/staging server 
+
+create env file
+```sh
+cp .env.example.production .env
+vim .env
+```
 
 

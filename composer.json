@@ -9,7 +9,8 @@
         "laravel/framework": "5.2.*",
         "barryvdh/laravel-debugbar": "^2.2",
         "jrean/laravel-user-verification": "^2.2",
-        "oprudkyi/laravel-mail-logger": "^1.0"
+        "oprudkyi/laravel-mail-logger": "^1.0",
+        "predis/predis": "^1.0"
     },
 	"require-dev": {
         "fzaninotto/faker": "~1.4",
