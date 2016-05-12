@@ -4,6 +4,8 @@ use Illuminate\Foundation\Testing\DatabaseMigrations;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 use Illuminate\Support\Facades\Hash;
 
+use Step\Acceptance\Member as MemberTester;
+
 /**
  * Class UsersTest
  */
@@ -129,15 +131,15 @@ class UsersTest extends TransactionsTestCase
     public function testNewUserRegistration()
     {
         $this->visit('/register')
-            ->type('Sergi Tur Badenas', 'name')
-            ->type('sergiturbadenas@gmail.com', 'email')
+            ->type(MemberTester::$username, 'name')
+            ->type(MemberTester::$email, 'email')
 //            ->check('terms') TODO
-            ->type('passw0RD', 'password')
-            ->type('passw0RD', 'password_confirmation')
+            ->type(MemberTester::$password, 'password')
+            ->type(MemberTester::$password, 'password_confirmation')
             ->press('Register')
             ->seePageIs('/verification/email_not_verified')
-            ->seeInDatabase('users', ['email' => 'sergiturbadenas@gmail.com',
-                                      'name'  => 'Sergi Tur Badenas']);
+            ->seeInDatabase('users', ['email' => MemberTester::$email,
+                                      'name'  => MemberTester::$username]);
     }
     /**
      * Test required fields on registration page

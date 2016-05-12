@@ -56,7 +56,11 @@ class SetupTestDb extends Command
         $this->info("Reload environment : " . \App::environment());
 		putenv('APP_ENV=' . \App::environment());
 		$this->laravel->make('Illuminate\Foundation\Bootstrap\DetectEnvironment')->bootstrap($this->laravel);
-		(new \Dotenv\Dotenv(\App::environmentPath(), \App::environmentFile() . "." . \App::environment()))->overload();
+		$envFile = \App::environmentFile();
+		if($envFile != ".env." . \App::environment()) {
+			$envFile = ".env." . \App::environment();
+		}
+		(new \Dotenv\Dotenv(\App::environmentPath(), $envFile ))->overload();
 		$this->laravel->make('Illuminate\Foundation\Bootstrap\LoadConfiguration')->bootstrap($this->laravel);
         //$this->info("d2" . env('DB_CONNECTION'));
         //$this->info("d2" . \App::environmentPath());
