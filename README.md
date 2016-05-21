@@ -138,7 +138,11 @@ Update dependencies
 
 	make update-downloaded-dependencies
 
-it will search for updated packages for composer/npm/bower and install them 
+	or
+
+	make update-downloaded-dependencies-production
+
+it will search for updated packages for composer/npm/bower and install them as well will update lock/json files 
 
 
 Mailcatcher integration
@@ -186,8 +190,8 @@ custom css rules you can add to resources/assets/sass/starterkit/starter-kit-cus
 it's applied after any other css, so it's possible to change any css behavior here
 
 
-Manual Deployment
-=================
+Manual Deployment Initialization
+================================
 This isn't adivsed , just for info:
 
 * First, clone your repository to production/staging server 
@@ -250,7 +254,20 @@ php artisan config:cache
 php artisan route:cache
 php artisan optimize
 
+#recompile js/css
+gulp
+
 ```
 
+Manual Deployment
+================
+
+
+```sh
+git pull
+make download-dependencies-production
+php artisan migrate
+make production-optimize
+```
 
 

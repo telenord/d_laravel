@@ -36,7 +36,7 @@ production_node_packages:
 
 download-dependencies-production-local: production_composer_packages production_node_packages | others_install
 
-.PHONY: rm_composer update_deps
+.PHONY: rm_composer update_deps update_deps_production
 
 rm_composer: 
 	$(RM) -r composer.phar
@@ -48,6 +48,15 @@ update_deps:
 	$(GULP)
 
 update-downloaded-dependencies-local: | rm_composer $(COMPOSER) update_deps
+
+update_deps_production:
+	$(PHP) $(COMPOSER) update --no-dev
+	$(NPM) update --only=production
+	$(BOWER) update
+	$(GULP)
+
+
+update-downloaded-dependencies-production: | rm_composer $(COMPOSER) update_deps_production
 
 #codecept and generated files ------------------
 
@@ -121,5 +130,6 @@ production-optimize-local:
 	$(PHP) $(ARTISAN) config:cache
 	$(PHP) $(ARTISAN) route:cache
 	$(PHP) $(ARTISAN) optimize
+	$(GULP)
 
 
