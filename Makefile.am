@@ -56,7 +56,7 @@ update_deps_production:
 	$(GULP)
 
 
-update-downloaded-dependencies-production: | rm_composer $(COMPOSER) update_deps_production
+update-downloaded-dependencies-production-local: | rm_composer $(COMPOSER) update_deps_production
 
 #codecept and generated files ------------------
 
