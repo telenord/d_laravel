@@ -133,6 +133,14 @@ touch storage/database/play.sqlite
 ./artisan key:generate -v
 ```
 
+Update dependencies
+===================
+
+	make update-downloaded-dependencies
+
+it will search for updated packages for composer/npm/bower and install them 
+
+
 Mailcatcher integration
 ======================
 
