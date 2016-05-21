@@ -222,6 +222,7 @@ php artisan migrate
 ```
 
 * optimize app
+
 ```sh
 make production-optimize
 ```
