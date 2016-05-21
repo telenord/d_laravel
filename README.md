@@ -189,6 +189,7 @@ This isn't adivsed , just for info:
 	./bootstrap.sh
 	./configure --enable-tests=no
 	make download-dependencies-production
+	chmod 777 -R storage
 ```
 
 * create db (in case of mysql)
@@ -221,22 +222,21 @@ php artisan migrate
 ```
 
 * optimize app
-
 ```sh
+make production-optimize
+```
+
+it will run next commands:
+```sh
+#optimize
 php artisan clear-compiled
 composer dump-autoload --optimize
-```
 
-* clear cache
-
-```sh
+#clear cache
 php artisan cache:clear
+php artisan view:clear
 
-```
-
-* caching 
-
-```sh
+#caching 
 php artisan config:cache
 php artisan route:cache
 php artisan optimize

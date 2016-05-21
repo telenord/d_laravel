@@ -71,6 +71,7 @@ AM_EXTRA_RECURSIVE_TARGETS([
 							run-mailcatcher
 							stop-mailcatcher
 							merge-starterkit
+							production-optimize
 							])
 AC_CONFIG_FILES([
 				 Makefile

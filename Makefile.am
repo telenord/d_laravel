@@ -80,8 +80,6 @@ stop-mailcatcher-local:
 
 
 #----------------------------------------------
-ARTISAN = ./artisan
-
 #probably TESTS
 check-local: $(MAILCATCHER) $(check_SCRIPTS) check_functional
 
@@ -111,4 +109,17 @@ clean-local:
 merge-starterkit-local: 
 	$(GIT) fetch starter-kit
 	$(GIT) merge starter-kit/master -m "merging starterkit updates"
+
+
+#production-optimize ----------------------
+ARTISAN = ./artisan
+
+production-optimize:
+	$(PHP) $(ARTISAN) clear-compiled
+	$(PHP) $(COMPOSER) dump-autoload --optimize
+	$(PHP) $(ARTISAN) cache:clear
+	$(PHP) $(ARTISAN) config:cache
+	$(PHP) $(ARTISAN) route:cache
+	$(PHP) $(ARTISAN) optimize
+
 
