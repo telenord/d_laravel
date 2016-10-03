@@ -27,8 +27,8 @@ fi
 AM_CONDITIONAL(WITH_TESTS, [test "$have_tests" = "yes"])
 	
 #check php unit
-AC_PATH_PROG([PHPUNIT], [phpunit])
-AM_CONDITIONAL(HAVE_PHPUNIT, [test "x$PHPUNIT" != "x"])
+#AC_PATH_PROG([PHPUNIT], [phpunit])
+#AM_CONDITIONAL(HAVE_PHPUNIT, [test "x$PHPUNIT" != "x"])
 	
 #node npm
 AC_PATH_PROG([NPM], [npm])
@@ -49,7 +49,7 @@ AM_CONDITIONAL(HAVE_GIT, [test "x$GIT" != "x"])
 #phpunit is need for tests
 if test "$have_tests" = "yes" ; then
 	#check php unit
-	AM_COND_IF([HAVE_PHPUNIT],,[AC_MSG_ERROR([required program 'phpunit' not found.])])
+	#AM_COND_IF([HAVE_PHPUNIT],,[AC_MSG_ERROR([required program 'phpunit' not found.])])
 	
 	#node npm
 	AM_COND_IF([HAVE_NPM],,[AC_MSG_ERROR([required program 'npm' not found.])])
