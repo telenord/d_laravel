@@ -1,48 +1,26 @@
-<!DOCTYPE html>
-<html>
-    <head>
-        <title>Verification error.</title>
+@extends('layouts.app')
 
-        <link href="https://fonts.googleapis.com/css?family=Lato:100" rel="stylesheet" type="text/css">
-
-        <style>
-            html, body {
-                height: 100%;
-            }
-
-            body {
-                margin: 0;
-                padding: 0;
-                width: 100%;
-                color: #B0BEC5;
-                display: table;
-                font-weight: 100;
-                font-family: 'Lato';
-            }
-
-            .container {
-                text-align: center;
-                display: table-cell;
-                vertical-align: middle;
-            }
-
-            .content {
-                text-align: center;
-                display: inline-block;
-            }
-
-            .title {
-                font-size: 72px;
-                margin-bottom: 40px;
-            }
-        </style>
-    </head>
-    <body>
-        <div class="container">
-            <div class="content">
-                <div class="title">Verification error.</div>
+<!-- Main Content -->
+@section('content')
+<div class="container">
+    <div class="row">
+        <div class="col-md-8 col-md-offset-2">
+            <div class="panel panel-default">
+                <div class="panel-heading">{!! trans('laravel-user-verification::user-verification.verification_error_header') !!}</div>
+                <div class="panel-body">
+                    <span class="help-block">
+                        <strong>{!! trans('laravel-user-verification::user-verification.verification_error_message') !!}</strong>
+                    </span>
+                    <div class="form-group">
+                        <div class="col-md-12">
+                            <a href="{{url('/')}}" class="btn btn-primary">
+                                {!! trans('laravel-user-verification::user-verification.verification_error_back_button') !!}
+                            </a>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
-    </body>
-</html>
-
+    </div>
+</div>
+@endsection

@@ -2,12 +2,12 @@
 
 /*
 |--------------------------------------------------------------------------
-| Routes File
+| Web Routes
 |--------------------------------------------------------------------------
 |
-| Here is where you will register all of the routes in an application.
-| It's a breeze. Simply tell Laravel the URIs it should respond to
-| and give it the controller to call when that URI is requested.
+| This file is where you may define all of the routes that are handled
+| by your application. Just tell Laravel the URIs it should respond
+| to using a Closure or controller method. Build something great!
 |
 */
 	
@@ -21,28 +21,16 @@ if (!App::environment('production')) {
 	});
 }
 
-/*
-|--------------------------------------------------------------------------
-| Application Routes
-|--------------------------------------------------------------------------
-|
-| This route group applies the "web" middleware group to every route
-| it contains. The "web" middleware group is defined in your HTTP
-| kernel and includes session state, CSRF protection, and more.
-|
-*/
+
+Route::auth();
+Route::get('/logout', 'Auth\LoginController@logout');
+
+//email verification 
+Route::get('verification/email_not_verified', ['as'=> 'verification.email_not_verified', 'uses' => 'Auth\EmailVerificationController@emailNotVerified']);
+Route::any('verification/resend_verification_email', ['as'=> 'verification.resend_verification_email', 'uses' => 'Auth\EmailVerificationController@resendVerificationEmail']);
+Route::get('verification/error', 'Auth\AuthController@getVerificationError');
+Route::get('verification/{token}', 'Auth\AuthController@getVerification');
 
 
-Route::group(['middleware' => 'web'], function () {
-    Route::auth();
-
-	//email verification 
-	Route::get('verification/email_not_verified', ['as'=> 'verification.email_not_verified', 'uses' => 'Auth\EmailVerificationController@emailNotVerified']);
-	Route::any('verification/resend_verification_email', ['as'=> 'verification.resend_verification_email', 'uses' => 'Auth\EmailVerificationController@resendVerificationEmail']);
-    Route::get('verification/error', 'Auth\AuthController@getVerificationError');
-    Route::get('verification/{token}', 'Auth\AuthController@getVerification');
-
-
-    Route::get('/home', ['as'=> 'user.home', 'uses' => 'HomeController@index']);
-    Route::get('/', 'HomeController@indexPublic');
-});
+Route::get('/home', ['as'=> 'user.home', 'uses' => 'HomeController@index']);
+Route::get('/', 'HomeController@indexPublic');
