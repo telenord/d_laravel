@@ -1,7 +1,7 @@
 laravel-bootstrap-adminlte-starter-kit 
 =============
 template for websites with basic functionality implemented
-- Laravel ((http://laravel.com/)  
+- Laravel 5.3 ((http://laravel.com/)  
 - AdminLte (https://almsaeedstudio.com/) (https://github.com/acacha/adminlte-laravel) 
 - composer
 - jrean/laravel-user-verification (https://github.com/jrean/laravel-user-verification)
@@ -26,7 +26,7 @@ template for websites with basic functionality implemented
 
 
 
-Last Modified: 2016-05-03
+Last Modified: 2016-11-08
 
 License
 =======
