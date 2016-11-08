@@ -179,13 +179,13 @@ class UsersCest
 		
 		//email received
 		$I->seeEmailCount(1);
-		$I->seeInLastEmailTo(MemberTester::$email, 'Your Password Reset Link');
-		$I->seeInLastEmail('Please click here to reset your password:');
-		$I->seeInLastEmail('If you did not ask to reset password at ' . AcceptanceTester::$applicationName . ', please ignore this email. Thank you!');
-		$I->seeInLastEmail('The ' . AcceptanceTester::$applicationName . ' Team');
+		$I->seeInLastEmailTo(MemberTester::$email, 'Reset Password');
+		$I->seeInLastEmail('You are receiving this email because we received a password reset request for your account');
+		$I->seeInLastEmail('If you did not request a password reset, no further action is required.');
+		$I->seeInLastEmail(AcceptanceTester::$applicationName);
 
 		//get verification link from email
-		$verificationLink = $I->grabMatchesFromLastEmail('@href="([^"]*)"@');
+		$verificationLink = $I->grabMatchesFromLastEmail('@<a href="([^"]*)"@');
         $I->amOnUrl($verificationLink[1]);
 
 		$I->seeInCurrentUrl('/password/reset');

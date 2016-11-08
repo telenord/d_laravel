@@ -4,7 +4,7 @@ template for websites with basic functionality implemented
 - Laravel ((http://laravel.com/)  
 - AdminLte (https://almsaeedstudio.com/) (https://github.com/acacha/adminlte-laravel) 
 - composer
-- jrean/laravel-user-verification
+- jrean/laravel-user-verification (https://github.com/jrean/laravel-user-verification)
 - oprudkyi/laravel-mail-logger
 - js:
 	- bower
