@@ -13,7 +13,7 @@ Last Modified: 2016-12-18
 License
 =======
 
-Copyright (C) 2016 Oleksii Prudkyi
+Copyright (c) 2016 Oleksii Prudkyi
 
 The laravel-bootstrap-adminlte-starter-kit kit is open-sourced software licensed under the [MIT license](http://opensource.org/licenses/MIT).
 

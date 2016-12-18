@@ -1,3 +1,9 @@
+<?php 
+/*
+ * This file is part of laravel-bootstrap-adminlte-starter-kit.
+ *
+ * Copyright (c) 2016 Oleksii Prudkyi
+ */ ?>
 <?php
 /*
  * based on https://github.com/acacha/adminlte-laravel/blob/master/tests/AcachaAdminLTELaravelTest.php
