@@ -1,11 +1,11 @@
 laravel-bootstrap-adminlte-starter-kit 
 =============
 template for websites with basic functionality implemented
-- Laravel 5.3 ((http://laravel.com/)  
+- Laravel 5.3 (http://laravel.com/)  
 - AdminLte (https://almsaeedstudio.com/) (https://github.com/acacha/adminlte-laravel) 
 - composer
 - jrean/laravel-user-verification (https://github.com/jrean/laravel-user-verification)
-- oprudkyi/laravel-mail-logger
+- oprudkyi/laravel-mail-logger (https://github.com/oprudkyi/laravel-mail-logger)
 - js:
 	- bower
 	- Bootstrap
