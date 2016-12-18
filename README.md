@@ -38,6 +38,7 @@ Project includes:
 	- datatables
 	- moment (https://github.com/moment/moment)
 	- bootstrap datetimepciker (https://github.com/Eonasdan/bootstrap-datetimepicker)
+	- js-error-alert (https://github.com/oprudkyi/js-error-alert)
 
 - testing:
 	- codeception
@@ -105,7 +106,7 @@ From the top directory, do:
 
 Run ./configure --help to see other configuration options
 
-Make :
+Install configured dependencies - tools like composer/bower and components as defined in composer.json, bower.json, package.json :
 
 	make download-dependencies
 
@@ -192,7 +193,7 @@ The building script is gulpfile.js. System is configured to generate single js f
 
 if you add/remove packages, you may also need to edit resources/assets/sass/app.scss as well for adding/removing css/scss/js 
 
-use 'gulp' or 'gulp watch' to compile resources
+use 'make gulp' or 'make gulp-watch' to compile resources
 
 custom css rules you can add to resources/assets/sass/starterkit/starter-kit-customize.scss
 it's applied after any other css, so it's possible to change any css behavior here
