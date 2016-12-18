@@ -124,6 +124,10 @@ merge-starterkit-local:
 ARTISAN = ./artisan
 
 production-optimize-local:
+production-optimize-local:
+	$(PHP) $(ARTISAN) view:clear
+	$(PHP) $(ARTISAN) config:clear
+	$(PHP) $(ARTISAN) route:clear
 	$(PHP) $(ARTISAN) clear-compiled
 	$(PHP) $(COMPOSER) dump-autoload --optimize
 	$(PHP) $(ARTISAN) cache:clear
