@@ -1,6 +1,30 @@
 laravel-bootstrap-adminlte-starter-kit 
 =============
-template for websites with basic functionality implemented
+Template for websites with basic functionality. It is based on next ideas:
+
+- have common features already integrated and configured (tests,gulp,bower etc)
+- simplify updates (via git merge from this project)
+- extensive use of .env config (slightly more then original Laravel) 
+- 'make' based macro-tool for often used commands 
+
+
+Last Modified: 2016-12-18
+
+License
+=======
+
+Copyright (C) 2016 Oleksii Prudkyi
+
+The laravel-bootstrap-adminlte-starter-kit kit is open-sourced software licensed under the [MIT license](http://opensource.org/licenses/MIT).
+
+
+Introduction
+============
+
+Just base functionality for other projects
+
+Project includes:
+
 - Laravel 5.3 (http://laravel.com/)  
 - AdminLte (https://almsaeedstudio.com/) (https://github.com/acacha/adminlte-laravel) 
 - composer
@@ -25,21 +49,6 @@ template for websites with basic functionality implemented
 	- oprudkyi/codeception-events-scripting
 
 
-
-Last Modified: 2016-12-18
-
-License
-=======
-
-Copyright (C) 2016 Oleksii Prudkyi
-
-The laravel-bootstrap-adminlte-starter-kit kit is open-sourced software licensed under the [MIT license](http://opensource.org/licenses/MIT).
-
-
-Introduction
-============
-
-Just base functionality for other projects
 
 Creation of new site based on starter kit
 ============
@@ -84,12 +93,11 @@ Installation
 ============
 
 If you are building from the first time out of the source repository, you will
-need to generate the configure scripts.  (This is not necessary if you
-downloaded a tarball.)  From the top directory, do:
+need to generate the configure scripts. From the top directory, do:
 
     ./bootstrap.sh
 
-Once the configure scripts are generated, Time Spotter can be configured.
+Once the configure scripts are generated, 'make' system can be configured.
 From the top directory, do:
 
     ./configure
