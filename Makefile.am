@@ -1,3 +1,7 @@
+#This file is part of laravel-bootstrap-adminlte-starter-kit.
+
+#Copyright (c) 2016 Oleksii Prudkyi
+
 #downloads -----------------------------------------
 
 COMPOSER = composer.phar
@@ -7,10 +11,6 @@ $(COMPOSER):
 	$(PHP) composer-setup.php
 	$(PHP) -r "unlink('composer-setup.php');"
 
-.PHONY: development_composer_packages
-
-development_composer_packages: $(COMPOSER)
-	$(PHP) $(COMPOSER) install
 
 BOWER = node_modules/.bin/bower
 GULP = node_modules/.bin/gulp
@@ -18,13 +18,24 @@ GULP = node_modules/.bin/gulp
 $(BOWER):
 	$(NPM) install
 
-download-dependencies-local: $(MAILCATCHER) development_composer_packages $(BOWER) |  others_install
+.PHONY: development_composer_packages
 
-.PHONY: others_install
+development_composer_packages: $(COMPOSER)
+	$(PHP) $(COMPOSER) install
 
-others_install:
+.PHONY: development_others_install
+
+development_others_install:
 	$(BOWER) install
 	$(GULP)
+
+download-dependencies-local: $(MAILCATCHER) development_composer_packages $(BOWER) |  development_others_install
+
+.PHONY: production_others_install
+
+production_others_install:
+	$(BOWER) install
+	$(GULP) --production
 
 .PHONY: production_composer_packages
 
@@ -34,7 +45,7 @@ production_composer_packages: $(COMPOSER)
 production_node_packages:
 	$(NPM) install --only=production
 
-download-dependencies-production-local: production_composer_packages production_node_packages | others_install
+download-dependencies-production-local: production_composer_packages production_node_packages | production_others_install
 
 .PHONY: rm_composer update_deps update_deps_production
 
@@ -53,7 +64,7 @@ update_deps_production:
 	$(PHP) $(COMPOSER) update --no-dev
 	$(NPM) update --only=production
 	$(BOWER) update
-	$(GULP)
+	$(GULP) --production
 
 
 update-downloaded-dependencies-production-local: | rm_composer $(COMPOSER) update_deps_production
@@ -134,7 +145,7 @@ production-optimize-local:
 	$(PHP) $(ARTISAN) config:cache
 	$(PHP) $(ARTISAN) route:cache
 	$(PHP) $(ARTISAN) optimize
-	$(GULP)
+	$(GULP) --production
 
 
 #gulp handlers

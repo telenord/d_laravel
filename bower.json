@@ -1,11 +1,12 @@
 {
-  "name": "Laravel Application",
+  "name": "laravel-bootstrap-adminlte-starter-kit",
   "dependencies": {
     "bootstrap-sass": "bootstrap-sass-official#^3.3.6",
     "font-awesome": "fontawesome#^4.5.0",
     "datatables": "^1.10.11",
     "AdminLTE": "admin-lte#^2.3.3",
     "remarkable-bootstrap-notify": "bootstrap.growl#^3.1.3",
-    "eonasdan-bootstrap-datetimepicker": "^4.17.37"
+    "eonasdan-bootstrap-datetimepicker": "^4.17.37",
+    "js-error-alert": "^1.0.1"
   }
 }
