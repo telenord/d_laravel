@@ -26,7 +26,7 @@ template for websites with basic functionality implemented
 
 
 
-Last Modified: 2016-11-08
+Last Modified: 2016-12-18
 
 License
 =======
@@ -241,15 +241,18 @@ make production-optimize
 
 it will run next commands:
 ```sh
-#optimize
+#clear cache
+php artisan view:clear
+php artisan config:clear
+php artisan route:clear
 php artisan clear-compiled
+
+#optimize
 composer dump-autoload --optimize
 
-#clear cache
-php artisan cache:clear
-php artisan view:clear
 
 #caching 
+php artisan cache:clear
 php artisan config:cache
 php artisan route:cache
 php artisan optimize
