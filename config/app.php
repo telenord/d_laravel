@@ -183,6 +183,8 @@ return [
 		Jrean\UserVerification\UserVerificationServiceProvider::class,
 
 		Oprudkyi\LaravelMailLogger\MailLoggerServiceProvider::class,
+
+		'SocialEngine\TestDbSetup\ServiceProvider',
     ],
 
     /*
