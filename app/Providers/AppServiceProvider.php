@@ -23,6 +23,10 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        //
+		//register non-production packages here
+		if(!$this->app->environment('production')) {
+			$this->app->register('SocialEngine\TestDbSetup\ServiceProvider');
+			$this->app->register('Barryvdh\Debugbar\ServiceProvider');
+		}
     }
 }

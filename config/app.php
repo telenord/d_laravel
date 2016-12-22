@@ -178,13 +178,12 @@ return [
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
 
-		Barryvdh\Debugbar\ServiceProvider::class,
-
 		Jrean\UserVerification\UserVerificationServiceProvider::class,
 
 		Oprudkyi\LaravelMailLogger\MailLoggerServiceProvider::class,
 
-		'SocialEngine\TestDbSetup\ServiceProvider',
+		//please note, non-production services are registered at the
+		//app/Providers/AppServiceProvider.php
     ],
 
     /*
@@ -233,7 +232,7 @@ return [
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
 
-		'Debugbar' => Barryvdh\Debugbar\Facade::class,
+		'Debugbar' => 'Barryvdh\Debugbar\Facade',
 		'UserVerification' => Jrean\UserVerification\Facades\UserVerification::class,
 
     ],
