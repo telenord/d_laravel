@@ -1,4 +1,10 @@
 /*
+ * This file is part of laravel-bootstrap-adminlte-starter-kit.
+ *
+ * Copyright (c) 2016 Oleksii Prudkyi
+*/
+
+/*
 defines 
 $.TSPApp.Ajax.post(url); 
 expects url and returned json with fields:

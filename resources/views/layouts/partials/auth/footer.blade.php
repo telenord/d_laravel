@@ -1,3 +1,9 @@
+{{--
+This file is part of laravel-bootstrap-adminlte-starter-kit.
+
+Copyright (c) 2016 Oleksii Prudkyi
+--}}
+
 <!-- Main Footer -->
 <footer class="main-footer">
     <!-- To the right -->

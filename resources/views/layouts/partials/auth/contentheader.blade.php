@@ -1,3 +1,9 @@
+{{--
+This file is part of laravel-bootstrap-adminlte-starter-kit.
+
+Copyright (c) 2016 Oleksii Prudkyi
+--}}
+
 {{-- if box then skip --}}
 @hasSection('simple_box_title')
 @else

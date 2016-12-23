@@ -1,4 +1,10 @@
 /*
+ * This file is part of laravel-bootstrap-adminlte-starter-kit.
+ *
+ * Copyright (c) 2016 Oleksii Prudkyi
+*/
+
+/*
 defines 
 $.TSPApp.Notify.showSuccess('success'); 
 $.TSPApp.Notify.showError('error'); 
