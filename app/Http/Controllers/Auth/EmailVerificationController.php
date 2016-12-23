@@ -37,12 +37,12 @@ class EmailVerificationController extends Controller
 			UserVerification::generate($user);
 			UserVerification::send($user, trans('registration.user-verification_email_subject'));
 			return $this->simpleSuccessAnswer(
-				"Verification email is sent", 
-				"Verification email is sent successfully. Please check your mail box"
+				trans('registration.resend-email.sent.title'), 
+				trans('registration.resend-email.sent.body')
 			);
 
 		} else {
-			throw new Exception("User not found");
+			throw new Exception(trans('registration.user_not_found'));
 		}
 
 	}
