@@ -67,6 +67,7 @@ test:
   script:
     - make -k check-functional
     - make -k check-acceptance
+  allow_failure: true
 
 # We test PHP7, but we allow it to fail
 #test:php71:
