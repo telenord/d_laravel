@@ -40,6 +40,14 @@ before_script:
         --with-freetype-dir=/usr/include/freetype2 && 
         docker-php-ext-install gd
 
+#phantomjs cache
+- "export PHANTOMJS_VERSION=2.1.1"
+- "export PATH=$PWD/.install-cache/phantomjs/phantomjs-$PHANTOMJS_VERSION-linux-x86_64/bin:$PATH"
+- "if [ $(phantomjs --version) != $PHANTOMJS_VERSION ]; then rm -rf $PWD/.install-cache/phantomjs; mkdir -p $PWD/.install-cache/phantomjs; fi"
+- "if [ $(phantomjs --version) != $PHANTOMJS_VERSION ]; then wget https://github.com/Medium/phantomjs/releases/download/v$PHANTOMJS_VERSION/phantomjs-$PHANTOMJS_VERSION-linux-x86_64.tar.bz2 -O $PWD/.install-cache/phantomjs/phantomjs-$PHANTOMJS_VERSION-linux-x86_64.tar.bz2; fi"
+- "if [ $(phantomjs --version) != $PHANTOMJS_VERSION ]; then tar -xvf $PWD/.install-cache/phantomjs/phantomjs-$PHANTOMJS_VERSION-linux-x86_64.tar.bz2 -C $PWD/.install-cache/phantomjs; fi"
+- "phantomjs --version"
+
 # Install all project dependencies
 - ./bootstrap.sh
 - ./configure  
