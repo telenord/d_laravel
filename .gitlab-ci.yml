@@ -13,7 +13,7 @@ before_script:
 # Install git, the php image doesn't have installed
 - apt-get update -yqq
 - apt-get install git curl 
-        zip 
+        zip wget tar
         npm nodejs-legacy ruby ruby-dev
         libtool
         automake autoconf
