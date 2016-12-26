@@ -41,7 +41,7 @@ before_script:
         docker-php-ext-install gd
 
 #phantomjs cache
-- ls -laR .install-cache
+- ls -la 
 - echo $PWD
 - "export PHANTOMJS_VERSION=2.1.1"
 - "export PATH=$PWD/.install-cache/phantomjs/phantomjs-$PHANTOMJS_VERSION-linux-x86_64/bin:$PATH"
@@ -69,6 +69,7 @@ test:
   script:
     - make -k check-functional
     - make -k check-acceptance
+    - ls -la 
   allow_failure: true
 
 # We test PHP7, but we allow it to fail
