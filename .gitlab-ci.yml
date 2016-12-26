@@ -20,6 +20,7 @@ before_script:
         libpng12-dev 
         libfreetype6-dev 
         libssl-dev 
+        libxml2-dev
         libmcrypt-dev -yqq
 
 # Install php extensions
@@ -57,11 +58,11 @@ test:
     - make -k check-acceptance
 
 # We test PHP7, but we allow it to fail
-test:php71:
-  image: php:7.1
-  script:
-    - make -k check
-    - make -k check-functional
-    - make -k check-acceptance
-  allow_failure: true
+#test:php71:
+#  image: php:7.1
+#  script:
+#    - make -k check
+#    - make -k check-functional
+#    - make -k check-acceptance
+#  allow_failure: true
 
