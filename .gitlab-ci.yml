@@ -6,6 +6,9 @@ cache:
   paths:
   - vendor/
   - node_modules/
+  - $HOME/.composer/cache/
+  - $HOME/.npm/
+  - $HOME/.cache/bower/
 
 before_script:
 # Install git, the php image doesn't have installed
@@ -13,6 +16,7 @@ before_script:
 - apt-get install git curl 
         zip 
         npm ruby ruby-dev
+        libtool
         libmemcached-dev 
         libz-dev 
         libpq-dev 
@@ -33,9 +37,6 @@ before_script:
         --with-jpeg-dir=/usr/lib 
         --with-freetype-dir=/usr/include/freetype2 && 
         docker-php-ext-install gd
-
-# Install composer
-- curl -sS https://getcomposer.org/installer | php
 
 # Install all project dependencies
 - ./bootstrap.sh
