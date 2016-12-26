@@ -3,12 +3,11 @@ image: php:7.0
 
 # Select what we should cache
 cache:
+  key: "ALL"  
   paths:
   - vendor/
   - node_modules/
-  - $HOME/.composer/cache/
-  - $HOME/.npm/
-  - $HOME/.cache/bower/
+  - .install-cache/
 
 before_script:
 # Install git, the php image doesn't have installed
