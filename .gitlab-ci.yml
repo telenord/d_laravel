@@ -17,6 +17,7 @@ before_script:
         zip 
         npm ruby ruby-dev
         libtool
+        automake autoconf
         libmemcached-dev 
         libz-dev 
         libpq-dev 
