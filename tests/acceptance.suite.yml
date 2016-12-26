@@ -14,7 +14,7 @@ modules:
         WebDriver:
             url: http://localhost:8383/
             browser: 'firefox'
-            pageload_timeout: 180
+            pageload_timeout: 30
         MailCatcher:
             url: 'http://127.0.0.1'
             port: '11091'

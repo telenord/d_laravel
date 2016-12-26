@@ -5,11 +5,12 @@ image: oprudkyi/laravel-bootstrap-adminlte-starter-kit:test-php-7.0
 cache:
   key: "ALL"  
   paths:
-  - vendor/
-  - node_modules/
-  - .install-cache/
+  - vendor
+  - node_modules
+  - .install-cache
 
 before_script:
+- ls -la 
 - "phantomjs --version"
 
 # Install all project dependencies
