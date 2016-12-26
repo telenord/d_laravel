@@ -27,7 +27,7 @@ before_script:
         libssl-dev 
         libxml2-dev
         libsqlite3-dev
-        fontconfig libicu libfontconfig1
+        fontconfig libicu-dev libfontconfig1
         libmcrypt-dev -yqq
 
 # Install php extensions
