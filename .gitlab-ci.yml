@@ -41,6 +41,8 @@ before_script:
         docker-php-ext-install gd
 
 #phantomjs cache
+- ls -laR .install-cache
+- echo $PWD
 - "export PHANTOMJS_VERSION=2.1.1"
 - "export PATH=$PWD/.install-cache/phantomjs/phantomjs-$PHANTOMJS_VERSION-linux-x86_64/bin:$PATH"
 - "if ! type phantomjs &> /dev/null || [[ $(phantomjs --version) != $PHANTOMJS_VERSION ]]; then rm -rf $PWD/.install-cache/phantomjs; mkdir -p $PWD/.install-cache/phantomjs; fi"
