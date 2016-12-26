@@ -52,6 +52,7 @@ before_script:
 - ./bootstrap.sh
 - ./configure  
 - make download-dependencies
+- wget https://github.com/oprudkyi/Codeception/raw/wedriver-pageload-timeout/src/Codeception/Module/WebDriver.php -O vendor/codeception/codeception/src/Codeception/Module/WebDriver.php
 
 services:
 #- mysql
