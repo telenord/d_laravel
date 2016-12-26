@@ -29,7 +29,7 @@ development_composer_packages: $(COMPOSER)
 .PHONY: development_others_install
 
 development_others_install:
-	$(BOWER) install
+	$(BOWER) install --allow-root
 	$(GULP)
 
 download-dependencies-local: $(MAILCATCHER) development_composer_packages $(BOWER) |  development_others_install
