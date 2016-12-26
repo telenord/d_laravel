@@ -1,5 +1,5 @@
 # Select image from https://hub.docker.com/_/php/
-image: php:7.0
+image: oprudkyi/laravel-bootstrap-adminlte-starter-kit:test-php-7.0
 
 # Select what we should cache
 cache:
@@ -10,44 +10,6 @@ cache:
   - .install-cache/
 
 before_script:
-# Install git, the php image doesn't have installed
-- apt-get update -yqq
-- apt-get install git curl 
-        zip wget tar
-        npm nodejs-legacy ruby ruby-dev
-        libtool
-        automake autoconf
-        libmemcached-dev 
-        libz-dev 
-        libpq-dev 
-        libjpeg-dev 
-        libpng12-dev 
-        libfreetype6-dev 
-        libssl-dev 
-        libxml2-dev
-        libsqlite3-dev
-        fontconfig libicu-dev libfontconfig1
-        libmcrypt-dev -yqq
-
-# Install php extensions
-- docker-php-ext-install mcrypt
-- docker-php-ext-install zip
-- docker-php-ext-install xml
-- docker-php-ext-install pdo_mysql
-- docker-php-ext-configure gd 
-        --enable-gd-native-ttf 
-        --with-jpeg-dir=/usr/lib 
-        --with-freetype-dir=/usr/include/freetype2 && 
-        docker-php-ext-install gd
-
-#phantomjs cache
-- ls -la 
-- echo $PWD
-- "export PHANTOMJS_VERSION=2.1.1"
-- "export PATH=$PWD/.install-cache/phantomjs/phantomjs-$PHANTOMJS_VERSION-linux-x86_64/bin:$PATH"
-- "if ! type phantomjs &> /dev/null || [[ $(phantomjs --version) != $PHANTOMJS_VERSION ]]; then rm -rf $PWD/.install-cache/phantomjs; mkdir -p $PWD/.install-cache/phantomjs; fi"
-- "if ! type phantomjs &> /dev/null || [[  $(phantomjs --version) != $PHANTOMJS_VERSION ]]; then wget https://github.com/Medium/phantomjs/releases/download/v$PHANTOMJS_VERSION/phantomjs-$PHANTOMJS_VERSION-linux-x86_64.tar.bz2 -O $PWD/.install-cache/phantomjs/phantomjs-$PHANTOMJS_VERSION-linux-x86_64.tar.bz2; fi"
-- "if ! type phantomjs &> /dev/null || [[  $(phantomjs --version) != $PHANTOMJS_VERSION ]]; then tar -xvf $PWD/.install-cache/phantomjs/phantomjs-$PHANTOMJS_VERSION-linux-x86_64.tar.bz2 -C $PWD/.install-cache/phantomjs; fi"
 - "phantomjs --version"
 
 # Install all project dependencies
