@@ -26,6 +26,7 @@ before_script:
         libfreetype6-dev 
         libssl-dev 
         libxml2-dev
+        libsqlite3-dev
         libmcrypt-dev -yqq
 
 # Install php extensions
