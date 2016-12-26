@@ -65,8 +65,12 @@ fi
 AM_EXTRA_RECURSIVE_TARGETS([
 							download-dependencies-production
 							download-dependencies 
+							install-dependencies-production
+							install-dependencies 
 							update-downloaded-dependencies
 							update-downloaded-dependencies-production
+							update-dependencies
+							update-dependencies-production
 							check-acceptance
 							check-functional
 							run-mailcatcher

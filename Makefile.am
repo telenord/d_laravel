@@ -24,6 +24,7 @@ development_composer_packages: $(COMPOSER)
 	$(PHP) $(COMPOSER) install --no-plugins --no-scripts
 	$(PHP) $(ARTISAN) clear-compiled
 	$(PHP) $(ARTISAN) optimize
+	$(NPM) install
 
 
 .PHONY: development_others_install
@@ -32,7 +33,9 @@ development_others_install:
 	$(BOWER) install --allow-root
 	$(GULP)
 
-download-dependencies-local: $(MAILCATCHER) development_composer_packages $(BOWER) |  development_others_install
+download-dependencies-local: $(MAILCATCHER) development_composer_packages |  development_others_install
+
+install-dependencies-local: download-dependencies-local
 
 .PHONY: production_others_install
 
@@ -50,6 +53,8 @@ production_node_packages:
 
 download-dependencies-production-local: production_composer_packages production_node_packages | production_others_install
 
+install-dependencies-production-local: download-dependencies-production-local
+
 .PHONY: rm_composer update_deps update_deps_production
 
 rm_composer: 
@@ -63,6 +68,8 @@ update_deps:
 
 update-downloaded-dependencies-local: | rm_composer $(COMPOSER) update_deps
 
+update-dependencies-local: update-downloaded-dependencies-local
+
 update_deps_production:
 	$(PHP) $(COMPOSER) update --no-dev
 	$(NPM) update --only=production
@@ -71,6 +78,8 @@ update_deps_production:
 
 
 update-downloaded-dependencies-production-local: | rm_composer $(COMPOSER) update_deps_production
+
+update-dependencies-production-local: update-downloaded-dependencies-production-local
 
 #codecept and generated files ------------------
 
