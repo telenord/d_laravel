@@ -1,5 +1,8 @@
 laravel-bootstrap-adminlte-starter-kit 
 =============
+[![build status](https://gitlab.com/oprudkyi/laravel-bootstrap-adminlte-starter-kit/badges/master/build.svg)](https://gitlab.com/oprudkyi/laravel-bootstrap-adminlte-starter-kit/commits/master)
+
+
 Template for websites with basic functionality. It is based on next ideas:
 
 - have common features already integrated and configured (tests,gulp,bower etc)
@@ -10,7 +13,6 @@ Template for websites with basic functionality. It is based on next ideas:
 
 Last Modified: 2016-12-18
 
-[![build status](https://gitlab.com/oprudkyi/laravel-bootstrap-adminlte-starter-kit/badges/master/build.svg)](https://gitlab.com/oprudkyi/laravel-bootstrap-adminlte-starter-kit/commits/master)
 
 License
 =======

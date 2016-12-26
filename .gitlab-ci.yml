@@ -15,7 +15,7 @@ before_script:
 - apt-get update -yqq
 - apt-get install git curl 
         zip 
-        npm ruby ruby-dev
+        npm nodejs-legacy ruby ruby-dev
         libtool
         automake autoconf
         libmemcached-dev 
