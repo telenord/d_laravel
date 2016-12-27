@@ -13,14 +13,8 @@ cache:
   - .install-cache
 
 before_script:
-- ls -la 
-- ls -laR /cache
-
-# Install all project dependencies
 - ./bootstrap.sh
 - ./configure  
-- make download-dependencies
-- wget https://github.com/oprudkyi/Codeception/raw/wedriver-pageload-timeout/src/Codeception/Module/WebDriver.php -O vendor/codeception/codeception/src/Codeception/Module/WebDriver.php
 
 services:
 #- mysql
@@ -33,15 +27,21 @@ variables:
 # We test PHP7.0
 test:php70:
   script:
+    # Install all project dependencies
+    - make download-dependencies
+    - wget https://github.com/oprudkyi/Codeception/raw/wedriver-pageload-timeout/src/Codeception/Module/WebDriver.php -O vendor/codeception/codeception/src/Codeception/Module/WebDriver.php
+    # run tests
     - make -k check-functional
     - make -k check-acceptance
-    - ls -la 
-    - ls -laR /cache
 
 # We test PHP7.1, but we allow it to fail
 test:php71:
   image: oprudkyi/laravel-bootstrap-adminlte-starter-kit:test-php-7.1
   script:
+    # Install all project dependencies
+    - make download-dependencies
+    - wget https://github.com/oprudkyi/Codeception/raw/wedriver-pageload-timeout/src/Codeception/Module/WebDriver.php -O vendor/codeception/codeception/src/Codeception/Module/WebDriver.php
+    # run tests
     - make -k check-functional
     - make -k check-acceptance
   allow_failure: true
