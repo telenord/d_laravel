@@ -1,4 +1,8 @@
 # Select image from https://hub.docker.com/_/php/
+#
+# there is used special image with some software preconfigured
+# https://hub.docker.com/r/oprudkyi/laravel-bootstrap-adminlte-starter-kit
+# https://github.com/oprudkyi/docker-laravel-bootstrap-adminlte-starter-kit
 image: oprudkyi/laravel-bootstrap-adminlte-starter-kit:test-php-7.0
 
 # Select what we should cache
@@ -11,7 +15,6 @@ cache:
 before_script:
 - ls -la 
 - ls -laR /cache
-- "phantomjs --version"
 
 # Install all project dependencies
 - ./bootstrap.sh
@@ -28,19 +31,18 @@ variables:
   #MYSQL_ROOT_PASSWORD: mysql
 
 # We test PHP7.0
-test:
+test:php70:
   script:
     - make -k check-functional
     - make -k check-acceptance
     - ls -la 
     - ls -laR /cache
-  allow_failure: true
 
-# We test PHP7, but we allow it to fail
-#test:php71:
-#  image: php:7.1
-#  script:
-#    - make -k check-functional
-#    - make -k check-acceptance
-#  allow_failure: true
+# We test PHP7.1, but we allow it to fail
+test:php71:
+  image: oprudkyi/laravel-bootstrap-adminlte-starter-kit:test-php-7.1
+  script:
+    - make -k check-functional
+    - make -k check-acceptance
+  allow_failure: true
 
