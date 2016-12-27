@@ -113,6 +113,8 @@ Install configured dependencies - tools like composer/bower and components as de
 
 	make install-dependencies
 
+For automicity and performance of CI the repositories of composer/bower/npm are stored under .install-cache directory (pointed out via rc files)
+
 
 Testing
 =======
@@ -128,6 +130,22 @@ This will make all of the libraries (as necessary), and run through
 the unit tests defined in each of the client libraries. If a single
 language fails, the make check will continue on and provide a synopsis
 at the end.
+
+Testing over GitLab CI
+=======
+
+Project has preconfigured [GitLab CI integration](https://gitlab.com/help/ci/README.md), all configs are stored in the [.gitlab-ci.yml](.gitlab-ci.yml) 
+
+There is used special [docker image](https://hub.docker.com/r/oprudkyi/laravel-bootstrap-adminlte-starter-kit) with preinstalled dependencies:  
+
+  - nodejs/npm 
+  - ruby/gem 
+  - autotools (automake/autoconf) 
+  - phnatomjs (headless webbrowser for testing) 
+  - git/wget/curl etc
+
+
+To avoid possible security issues if you are using starter-kit for private projects at GitLab site, please disable GitLab's shared runners and start private one.
 
 
 Boostraping development environment
