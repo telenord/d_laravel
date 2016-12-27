@@ -111,7 +111,7 @@ Run ./configure --help to see other configuration options
 
 Install configured dependencies - tools like composer/bower and components as defined in composer.json, bower.json, package.json :
 
-	make download-dependencies
+	make install-dependencies
 
 
 Testing
@@ -148,11 +148,11 @@ touch storage/database/play.sqlite
 Update dependencies
 ===================
 
-	make update-downloaded-dependencies
+	make update-dependencies
 
 	or
 
-	make update-downloaded-dependencies-production
+	make update-dependencies-production
 
 it will search for updated packages for composer/npm/bower and install them as well will update lock/json files 
 
@@ -212,7 +212,7 @@ This isn't adivsed , just for info:
 ```sh
 	./bootstrap.sh
 	./configure --enable-tests=no
-	make download-dependencies-production
+	make install-dependencies-production
 	chmod 777 -R storage
 ```
 
@@ -280,7 +280,7 @@ Manual Deployment
 
 ```sh
 git pull
-make download-dependencies-production
+make install-dependencies-production
 php artisan migrate
 make production-optimize
 ```
