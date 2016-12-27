@@ -11,7 +11,7 @@ Template for websites with basic functionality. It is based on next ideas:
 - 'make' based macro-tool for often used commands 
 
 
-Last Modified: 2016-12-18
+Last Modified: 2016-12-27
 
 
 License
@@ -27,32 +27,31 @@ Introduction
 
 Just base functionality for other projects
 
-Project includes:
+Project includes already preconfigured resources:
 
-- Laravel 5.3 (http://laravel.com/)  
-- AdminLte (https://almsaeedstudio.com/) (https://github.com/acacha/adminlte-laravel) 
-- composer
-- jrean/laravel-user-verification (https://github.com/jrean/laravel-user-verification)
-- oprudkyi/laravel-mail-logger (https://github.com/oprudkyi/laravel-mail-logger)
-- js:
-	- bower
-	- Bootstrap
-	- jQuery 
-	- fontawesome
-	- datatables
-	- moment (https://github.com/moment/moment)
-	- bootstrap datetimepciker (https://github.com/Eonasdan/bootstrap-datetimepicker)
-	- js-error-alert (https://github.com/oprudkyi/js-error-alert)
+- [Laravel 5.3](http://laravel.com/)  
+- [AdminLte template](https://almsaeedstudio.com/) [Laravel Integration](https://github.com/acacha/adminlte-laravel) 
+- [jrean/laravel-user-verification](https://github.com/jrean/laravel-user-verification)
+- [oprudkyi/laravel-mail-logger](https://github.com/oprudkyi/laravel-mail-logger)
+- Front-End:
+	- [Bower](https://bower.io/)
+	- [Bootstrap](http://getbootstrap.com/)
+	- [Font Awesome](http://fontawesome.io/)
+	- [jQuery](https://jquery.com/)
+	- [DataTables](https://datatables.net/)
+	- [Moment.js](http://momentjs.com/)
+	- [Bootstrap 3 Date/Time Picker](https://github.com/Eonasdan/bootstrap-datetimepicker)
+	- [js-error-alert](https://github.com/oprudkyi/js-error-alert)
 
-- testing:
-	- codeception
-	- phpunit
-	- mailcatcher
-	- codeception/phpbuiltinserver
-	- captbaritone/mailcatcher-codeception-module
-	- site5/phantomank
-	- oprudkyi/codeception-events-scripting
-
+- Testing (preconfigured for unit,functional and acceptance tests):
+	- [Codeception](http://codeception.com/) - BDD-styled PHP testing framework atop of [PHPUnit](https://phpunit.de/)
+	- [Codeception/PhpBuiltinServer](https://github.com/tiger-seo/PhpBuiltinServer) - Codeception extension to start and stop PHP built-in web server for your tests.
+	- [Phantoman](https://github.com/grantlucas/phantoman) - The Codeception extension for automatically starting and stopping PhantomJS when running tests.
+	- [codeception-events-scripting](https://github.com/oprudkyi/codeception-events-scripting) - The Codeception extension for automatically running shell scripts on Codeception events.
+	- [MailCatcher](https://mailcatcher.me/) - catches mails and provides API for testing
+	- [Codeception MailCatcher Module](https://github.com/captbaritone/codeception-mailcatcher-module)
+	- [PhantomJS](http://phantomjs.org/) - a headless WebKit, used for acceptance testing
+	- [Setup Test DB Command for Laravel](https://github.com/SocialEngine/setup-test-db)
 
 
 Creation of new site based on starter kit
