@@ -3,7 +3,6 @@ image: oprudkyi/laravel-bootstrap-adminlte-starter-kit:test-php-7.0
 
 # Select what we should cache
 cache:
-  key: "ALL"  
   paths:
   - vendor
   - node_modules
