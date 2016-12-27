@@ -10,6 +10,7 @@ cache:
 
 before_script:
 - ls -la 
+- ls -la /cache
 - "phantomjs --version"
 
 # Install all project dependencies
@@ -32,6 +33,7 @@ test:
     - make -k check-functional
     - make -k check-acceptance
     - ls -la 
+    - ls -la /cache
   allow_failure: true
 
 # We test PHP7, but we allow it to fail
