@@ -21,9 +21,7 @@ $(BOWER):
 .PHONY: development_composer_packages
 
 development_composer_packages: $(COMPOSER)
-	$(PHP) $(COMPOSER) install --no-plugins --no-scripts
-	$(PHP) $(ARTISAN) clear-compiled
-	$(PHP) $(ARTISAN) optimize
+	$(PHP) $(COMPOSER) install
 	$(NPM) install
 
 

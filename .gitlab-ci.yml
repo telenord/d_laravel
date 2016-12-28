@@ -15,6 +15,7 @@ cache:
 before_script:
 - ./bootstrap.sh
 - ./configure  
+- export COMPOSER_ALLOW_SUPERUSER=1
 
 services:
 #- mysql
