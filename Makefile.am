@@ -20,6 +20,7 @@ $(BOWER):
 
 .PHONY: development_composer_packages
 
+#on fresh install artisan fails to work, so run composer twice
 development_composer_packages: $(COMPOSER)
 	$(PHP) $(COMPOSER) install --no-plugins --no-scripts
 	$(PHP) $(COMPOSER) install
