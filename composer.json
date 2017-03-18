@@ -42,8 +42,6 @@
     },
     "autoload-dev": {
         "classmap": [
-            "tests/functional/TestCase.php",
-            "tests/functional/TransactionsTestCase.php"
         ]
     },
     "scripts": {
