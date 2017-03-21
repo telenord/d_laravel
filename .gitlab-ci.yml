@@ -29,8 +29,7 @@ variables:
 test:php70:
   script:
     # Install all project dependencies
-    - make download-dependencies
-    #- wget https://github.com/oprudkyi/Codeception/raw/wedriver-pageload-timeout/src/Codeception/Module/WebDriver.php -O vendor/codeception/codeception/src/Codeception/Module/WebDriver.php
+    - make install-dependencies
     # run tests
     - make -k check-functional
     - make -k check-acceptance
@@ -40,8 +39,7 @@ test:php71:
   image: oprudkyi/laravel-bootstrap-adminlte-starter-kit:test-php-7.1
   script:
     # Install all project dependencies
-    - make download-dependencies
-    #- wget https://github.com/oprudkyi/Codeception/raw/wedriver-pageload-timeout/src/Codeception/Module/WebDriver.php -O vendor/codeception/codeception/src/Codeception/Module/WebDriver.php
+    - make install-dependencies
     # run tests
     - make -k check-functional
     - make -k check-acceptance

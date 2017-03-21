@@ -11,7 +11,7 @@ Template for websites with basic functionality. It is based on next ideas:
 - 'make' based macro-tool for often used commands 
 
 
-Last Modified: 2016-12-27
+Last Modified: 2017-03-20
 
 
 License
@@ -29,7 +29,7 @@ Just base functionality for other projects
 
 Project includes already preconfigured resources:
 
-- [Laravel 5.3](http://laravel.com/)  
+- [Laravel 5.4](http://laravel.com/)  
 - [AdminLte template](https://almsaeedstudio.com/) [Laravel Integration](https://github.com/acacha/adminlte-laravel) 
 - [jrean/laravel-user-verification](https://github.com/jrean/laravel-user-verification)
 - [oprudkyi/laravel-mail-logger](https://github.com/oprudkyi/laravel-mail-logger)
@@ -195,26 +195,14 @@ Mailcatcher web gui available via http://127.0.0.1:1080/
 Javascript/Css assets
 ====================
 
-Intergration is based on [Laravel Elixir](https://laravel.com/docs/master/elixir) and 
-[Bower](http://bower.io) as package system (packages installed into vendor/bower_components). 
+Intergration is based on [Laravel Mix](https://laravel.com/docs/master/mix) and 
+[WebPack](https://webpack.js.org/) as css/js compilation system . 
 
-To call bower use something like 
+The building script is webpack.mix.js. System is configured to generate single js file from all packages provided (as well single css file)  
 
-```sh
-node_modules/.bin/bower install "eonasdan-bootstrap-datetimepicker#latest" --save
-```
+if you add/remove packages, you may also need to edit resources/assets/sass/app.scss and resources/javascripts/app.js for adding/removing css/scss/js 
 
-or update current dependencies
-
-```sh
-node_modules/.bin/bower install
-```
-
-The building script is gulpfile.js. System is configured to generate single js file from all packages provided (as well single css file)  
-
-if you add/remove packages, you may also need to edit resources/assets/sass/app.scss as well for adding/removing css/scss/js 
-
-use 'make gulp' or 'make gulp-watch' to compile resources
+use 'make mix' or 'make mix-watch' to compile resources
 
 custom css rules you can add to resources/assets/sass/starterkit/starter-kit-customize.scss
 it's applied after any other css, so it's possible to change any css behavior here

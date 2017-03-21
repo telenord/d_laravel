@@ -8,12 +8,11 @@ COMPOSER = composer.phar
 
 $(COMPOSER):
 	$(PHP) -r "readfile('https://getcomposer.org/installer');" > composer-setup.php
-	$(PHP) composer-setup.php
+	$(PHP) composer-setup.php --install-dir="."
 	$(PHP) -r "unlink('composer-setup.php');"
 
 
 BOWER = node_modules/.bin/bower
-GULP = node_modules/.bin/gulp
 
 $(BOWER):
 	$(NPM) install
@@ -31,7 +30,7 @@ development_composer_packages: $(COMPOSER)
 
 development_others_install:
 	$(BOWER) install --allow-root
-	$(GULP)
+	$(NPM) run dev
 
 download-dependencies-local: $(MAILCATCHER) development_composer_packages |  development_others_install
 
@@ -41,7 +40,7 @@ install-dependencies-local: download-dependencies-local
 
 production_others_install:
 	$(BOWER) install
-	$(GULP) --production
+	$(NPM) run production
 
 .PHONY: production_composer_packages
 
@@ -64,7 +63,7 @@ update_deps:
 	$(PHP) $(COMPOSER) update
 	$(NPM) update
 	$(BOWER) update
-	$(GULP)
+	$(NPM) run dev
 
 update-downloaded-dependencies-local: | rm_composer $(COMPOSER) update_deps
 
@@ -74,7 +73,7 @@ update_deps_production:
 	$(PHP) $(COMPOSER) update --no-dev
 	$(NPM) update --only=production
 	$(BOWER) update
-	$(GULP) --production
+	$(NPM) run production
 
 
 update-downloaded-dependencies-production-local: | rm_composer $(COMPOSER) update_deps_production
@@ -157,14 +156,14 @@ production-optimize-local:
 	$(PHP) $(ARTISAN) config:cache
 	$(PHP) $(ARTISAN) route:cache
 	$(PHP) $(ARTISAN) optimize
-	$(GULP) --production
+	$(NPM) run production
 
 
-#gulp handlers
-gulp:
-	$(GULP)
+#mix handlers
+mix:
+	$(NPM) run dev
 
-gulp-watch:
-	$(GULP) watch
+mix-watch:
+	$(NPM) run watch
 
 
