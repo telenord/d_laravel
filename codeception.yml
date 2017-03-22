@@ -19,6 +19,7 @@ extensions:
         Codeception\Extension\Phantoman:
             path: 'node_modules/.bin/phantomjs'
             suites: ['acceptance', 'acceptance (phantom)', 'acceptance (chrome)', 'acceptance (firefox)']
+            debug: true
         Codeception\Extension\PhpBuiltinServer:
             hostname: localhost
             port: 8383
