@@ -1,4 +1,9 @@
 <?php
+/*
+ * This file is part of laravel-bootstrap-adminlte-starter-kit.
+ *
+ * Copyright (c) 2016 Oleksii Prudkyi
+ */
 
 
 /**
@@ -16,9 +21,53 @@
  *
  * @SuppressWarnings(PHPMD)
 */
-class AcceptanceTester extends \Codeception\Actor
+class AcceptanceTesterBase extends \Codeception\Actor
 {
     use _generated\AcceptanceTesterActions;
+}
+
+class AcceptanceTester extends AcceptanceTesterBase
+{
+	public function amOnPage($page) 
+	{
+		parent::amOnPage($page);
+		//$this->waitForJs('return document.readyState == "complete"', 10);
+		$this->dontSeeJsErrors();
+		$this->dontSeeImgErrors();
+	}
+
+	public function click($link, $context = null) 
+	{
+		parent::click($link, $context);
+		$this->dontSeeJsErrors();
+	}
+
+	public function dontSeeJsErrors()
+	{
+		//check js errors
+		$error = $this->grabAttributeFrom( "head", "data-jserror" );
+		if(!is_null($error)) {
+			$this->fail($error);
+		}
+	}
+
+	public function dontSeeImgErrors()
+	{
+		//check img errors
+		$error = $this->grabAttributeFrom( "head", "data-imgerror" );
+		if(!is_null($error)) {
+			$this->fail($error);
+		}
+	}
+
+	/*
+    public function waitAjaxLoad($timeout = 10)
+    {
+        $this->waitForJs('return !!window.jQuery && window.jQuery.active == 0;', $timeout);
+        $this->wait(1);
+        $this->dontSeeJsError();
+    }
+	*/
 
    /**
     * Define custom actions here

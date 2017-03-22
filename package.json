@@ -19,8 +19,8 @@
     "eonasdan-bootstrap-datetimepicker": "^4.17.37",
     "font-awesome": "^4.7.0",
     "jquery": "^3.2.1",
-    "js-error-alert": "^1.0.4",
-    "laravel-mix": "^0.8.3",
+    "js-error-alert": "^1.0.7",
+    "laravel-mix": "^0.8.9",
     "lodash": "^4.17.4",
     "uglify-js": "git+https://github.com/mishoo/UglifyJS2.git#harmony",
     "vue": "^2.1.10"

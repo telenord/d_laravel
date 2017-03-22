@@ -10,11 +10,13 @@ modules:
         - WebDriver
         - \Helper\Acceptance
         - MailCatcher
+        - Asserts
     config:
         WebDriver:
             url: http://localhost:8383/
             browser: 'firefox'
             pageload_timeout: 30
+            log_js_errors: true
         MailCatcher:
             url: 'http://127.0.0.1'
             port: '11091'
