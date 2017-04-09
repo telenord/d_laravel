@@ -5,7 +5,7 @@ laravel-bootstrap-adminlte-starter-kit
 
 Template for websites with basic functionality. It is based on next ideas:
 
-- have common features already integrated and configured (tests,gulp,bower etc)
+- have common features already integrated and configured (tests,laravel-mix/webpack/babel,bower etc)
 - simplify updates (via git merge from this project)
 - extensive use of .env config (slightly more then original Laravel) 
 - 'make' based macro-tool for often used commands 
@@ -276,7 +276,7 @@ php artisan route:cache
 php artisan optimize
 
 #recompile js/css
-gulp
+npm run production
 
 ```
 
