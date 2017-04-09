@@ -45,6 +45,7 @@ production_others_install:
 .PHONY: production_composer_packages
 
 production_composer_packages: $(COMPOSER)
+	$(PHP) $(COMPOSER) install --no-plugins --no-scripts --no-dev
 	$(PHP) $(COMPOSER) install --no-dev
 
 production_node_packages:
