@@ -53,5 +53,7 @@ deploy to production:
   only:
     - master
   when: manual
-  environment: production
+  environment:
+    name: production
+    url: $PRODUCTION_URI
 
