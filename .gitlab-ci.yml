@@ -46,3 +46,12 @@ test:php71:
     - make -k check-acceptance
   allow_failure: true
 
+deploy to production:
+  stage: deploy
+  script:
+    - echo Deploy production
+  only:
+    - master
+  when: manual
+  environment: production
+
