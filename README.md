@@ -9,15 +9,16 @@ Template for websites with basic functionality. It is based on next ideas:
 - simplify updates (via git merge from this project)
 - extensive use of .env config (slightly more then original Laravel) 
 - 'make' based macro-tool for often used commands 
+- [GitLab CI integration](https://gitlab.com/help/ci/README.md)
 
 
-Last Modified: 2017-03-20
+Last Modified: 2017-04-12
 
 
 License
 =======
 
-Copyright (c) 2016 Oleksii Prudkyi
+Copyright (c) 2016-2017 Oleksii Prudkyi
 
 The laravel-bootstrap-adminlte-starter-kit kit is open-sourced software licensed under the [MIT license](http://opensource.org/licenses/MIT).
 
@@ -285,13 +286,25 @@ npm run production
 Manual Deployment
 ================
 
-
+There is script ```deploy_production.sh``` with simplified git based deployment, if it is run on server it will autoupdate git and dependencies, there are next commands:
 ```sh
+php artisan down
 git pull
 make install-dependencies-production
-php artisan migrate
+php artisan migrate --force --no-interaction --verbose
 make production-optimize
-npm run production
+php artisan up
 ```
 
+Please note, ```deploy_production.sh``` is very optimistic for errors and will break/stop if something wrong (and leave site in maintenance mode), then you have to fix it manually
+
+Deployment via [GitLab CI](https://gitlab.com/help/ci/README.md)
+================
+
+[.gitlab-ci.yml](.gitlab-ci.yml) is configured to support simple ssh/git based deployment via GitLab Gui. i.e. there is manual step/job in pipelines - "deploy to production"
+
+To use it you have to add next Secret Variables (in CI/CD Pipelines settings):
+ - PRODUCTION_URI  - url to production server
+ - PRODUCTION_SSH_PRIVATE_KEY - ssh private key text (~/.ssh/id_rsa) which has access to server (i.e. public key added to ~/.ssh/authorized_keys on server
+ - PRODUCTION_DEPLOY_REMOTE_COMMAND - something like :  ssh -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null user_on_server@server_host /path/to/source/on/server/deploy_production.sh
 
