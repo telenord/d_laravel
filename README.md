@@ -275,9 +275,11 @@ php artisan config:cache
 php artisan route:cache
 php artisan optimize
 
-#recompile js/css
-npm run production
 
+```
+* recompile js/css
+```sh
+npm run production
 ```
 
 Manual Deployment
@@ -289,6 +291,7 @@ git pull
 make install-dependencies-production
 php artisan migrate
 make production-optimize
+npm run production
 ```
 
 

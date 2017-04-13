@@ -157,7 +157,7 @@ production-optimize-local:
 	$(PHP) $(ARTISAN) config:cache
 	$(PHP) $(ARTISAN) route:cache
 	$(PHP) $(ARTISAN) optimize
-	$(NPM) run production-quiet
+	#$(NPM) run production-quiet
 
 
 #mix handlers
