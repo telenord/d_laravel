@@ -14,9 +14,6 @@ cache:
   - .install-cache
 
 before_script:
-- ./bootstrap.sh
-- ./configure  
-- export COMPOSER_ALLOW_SUPERUSER=1
 
 services:
 #- mysql
@@ -29,6 +26,9 @@ variables:
 # We test PHP7.0
 test:php70:
   script:
+    - ./bootstrap.sh
+    - ./configure  
+    - export COMPOSER_ALLOW_SUPERUSER=1
     # Install all project dependencies
     - make install-dependencies
     # run tests
@@ -39,6 +39,9 @@ test:php70:
 test:php71:
   image: oprudkyi/laravel-bootstrap-adminlte-starter-kit:test-php-7.1
   script:
+    - ./bootstrap.sh
+    - ./configure  
+    - export COMPOSER_ALLOW_SUPERUSER=1
     # Install all project dependencies
     - make install-dependencies
     # run tests
@@ -49,7 +52,15 @@ test:php71:
 deploy to production:
   stage: deploy
   script:
+    # simple ssh based deploy:
     - echo Deploy production
+    # run ssh-agent
+    - eval $(ssh-agent -s)
+    # add ssh key stored in SSH_PRIVATE_KEY variable to the agent store
+    - ssh-add <(echo "$PRODUCTION_SSH_PRIVATE_KEY")
+    # call remote command, set it to something like: 
+    # ssh -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null user_on_server@server_host /path/to/source/on/server/deploy_production.sh
+    - $PRODUCTION_DEPLOY_REMOTE_COMMAND
   only:
     - master
   when: manual
