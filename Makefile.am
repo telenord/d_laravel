@@ -147,7 +147,6 @@ merge-starterkit-local:
 ARTISAN = ./artisan
 
 production-optimize-local:
-production-optimize-local:
 	$(PHP) $(ARTISAN) view:clear
 	$(PHP) $(ARTISAN) config:clear
 	$(PHP) $(ARTISAN) route:clear
@@ -157,10 +156,12 @@ production-optimize-local:
 	$(PHP) $(ARTISAN) config:cache
 	$(PHP) $(ARTISAN) route:cache
 	$(PHP) $(ARTISAN) optimize
-	#$(NPM) run production-quiet
 
 
 #mix handlers
+production-mix:
+	$(NPM) run production
+
 mix:
 	$(NPM) run dev
 
