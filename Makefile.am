@@ -30,7 +30,7 @@ development_composer_packages: $(COMPOSER)
 
 development_others_install:
 	$(BOWER) install --allow-root
-	$(NPM) run dev
+	$(NPM) run dev-quiet
 
 download-dependencies-local: $(MAILCATCHER) development_composer_packages |  development_others_install
 
@@ -40,7 +40,7 @@ install-dependencies-local: download-dependencies-local
 
 production_others_install:
 	$(BOWER) install
-	$(NPM) run production
+	$(NPM) run production-quiet
 
 .PHONY: production_composer_packages
 
@@ -74,7 +74,7 @@ update_deps_production:
 	$(PHP) $(COMPOSER) update --no-dev
 	$(NPM) update --only=production
 	$(BOWER) update
-	$(NPM) run production
+	$(NPM) run production-quiet
 
 
 update-downloaded-dependencies-production-local: | rm_composer $(COMPOSER) update_deps_production
@@ -157,7 +157,7 @@ production-optimize-local:
 	$(PHP) $(ARTISAN) config:cache
 	$(PHP) $(ARTISAN) route:cache
 	$(PHP) $(ARTISAN) optimize
-	$(NPM) run production
+	$(NPM) run production-quiet
 
 
 #mix handlers
