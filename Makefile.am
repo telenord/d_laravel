@@ -61,6 +61,7 @@ rm_composer:
 	$(RM) -r composer.phar
 
 update_deps:
+	$(PHP) $(COMPOSER) update --no-plugins --no-scripts
 	$(PHP) $(COMPOSER) update
 	$(NPM) update
 	$(BOWER) update
@@ -71,6 +72,7 @@ update-downloaded-dependencies-local: | rm_composer $(COMPOSER) update_deps
 update-dependencies-local: update-downloaded-dependencies-local
 
 update_deps_production:
+	$(PHP) $(COMPOSER) update --no-plugins --no-scripts --no-dev
 	$(PHP) $(COMPOSER) update --no-dev
 	$(NPM) update --only=production
 	$(BOWER) update
