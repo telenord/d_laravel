@@ -63,7 +63,7 @@ deploy to production:
     - $PRODUCTION_DEPLOY_REMOTE_COMMAND
   only:
     - master
-  when: manual
+  #enable for manual deploy: when: manual
   environment:
     name: production
     url: $PRODUCTION_URI
