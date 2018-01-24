@@ -38,4 +38,7 @@ autom4te.cache
 /ltmain.sh
 /missing
 
+#idea
+/.idea
+
 
